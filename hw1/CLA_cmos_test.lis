@@ -1,0 +1,1584 @@
+ ****** HSPICE -- Q-2020.03 linux64 (Mar  8 2020) ******                        
+  Copyright (c) 1986 - 2023 by Synopsys, Inc. All Rights Reserved.              
+  This software and the associated documentation are proprietary
+  to Synopsys, Inc. This software may only be used in accordance
+  with the terms and conditions of a written license agreement with
+  Synopsys, Inc. All other use, reproduction, or distribution of
+  this software is strictly prohibited.
+  Input File: CLA_cmos_test.sp                                                  
+  Command line options: /usr/cad/synopsys/hspice/cur/hspice/linux64/hspice -i CLA_cmos_test.sp -o CLA_cmos_test.lis
+  Start time: Thu Mar 16 21:45:54 2023
+ lic:  
+ lic: FLEXlm: SDK_12.6 
+ lic: USER:   109303021            HOSTNAME: ares-athena 
+ lic: HOSTID: "e61f13c2e205"       PID:      13346 
+ lic: Using FLEXlm license file: 
+ lic: 26585@lshc 
+ lic: Checkout 1 hspice 
+ lic: License/Maintenance for hspice will expire on 14-may-2025/2022.06 
+ lic: 283(in_use)/600(total) FLOATING license(s) on SERVER 26585@lshc 
+ lic:   
+1****** HSPICE -- Q-2020.03 linux64 (Mar  8 2020) ******                        
+ ******  
+ .title carry_lookahead addder implement by cmos logic
+
+ ****** circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 xcla_8.                         cla_8              1.00 
+        2 xcla_8.xu0.                     unit               1.00 
+        3 xcla_8.xu1.                     unit               1.00 
+        4 xcla_8.xu2.                     unit               1.00 
+        5 xcla_8.xu3.                     unit               1.00 
+        6 xcla_8.xu4.                     unit               1.00 
+        7 xcla_8.xu5.                     unit               1.00 
+        8 xcla_8.xu6.                     unit               1.00 
+        9 xcla_8.xu7.                     unit               1.00 
+       10 xcla_8.xu0.xxnor_upper.         xnor               1.00 
+       11 xcla_8.xu0.xxnor_lower.         xnor               1.00 
+       12 xcla_8.xu0.xmux.                mux                1.00 
+       13 xcla_8.xu1.xxnor_upper.         xnor               1.00 
+       14 xcla_8.xu1.xxnor_lower.         xnor               1.00 
+       15 xcla_8.xu1.xmux.                mux                1.00 
+       16 xcla_8.xu2.xxnor_upper.         xnor               1.00 
+       17 xcla_8.xu2.xxnor_lower.         xnor               1.00 
+       18 xcla_8.xu2.xmux.                mux                1.00 
+       19 xcla_8.xu3.xxnor_upper.         xnor               1.00 
+       20 xcla_8.xu3.xxnor_lower.         xnor               1.00 
+       21 xcla_8.xu3.xmux.                mux                1.00 
+       22 xcla_8.xu4.xxnor_upper.         xnor               1.00 
+       23 xcla_8.xu4.xxnor_lower.         xnor               1.00 
+       24 xcla_8.xu4.xmux.                mux                1.00 
+       25 xcla_8.xu5.xxnor_upper.         xnor               1.00 
+       26 xcla_8.xu5.xxnor_lower.         xnor               1.00 
+       27 xcla_8.xu5.xmux.                mux                1.00 
+       28 xcla_8.xu6.xxnor_upper.         xnor               1.00 
+       29 xcla_8.xu6.xxnor_lower.         xnor               1.00 
+       30 xcla_8.xu6.xmux.                mux                1.00 
+       31 xcla_8.xu7.xxnor_upper.         xnor               1.00 
+       32 xcla_8.xu7.xxnor_lower.         xnor               1.00 
+       33 xcla_8.xu7.xmux.                mux                1.00 
+       34 xcla_8.xu0.xxnor_upper.xinv1.   inv                1.00 
+       35 xcla_8.xu0.xxnor_upper.xinv2.   inv                1.00 
+       36 xcla_8.xu0.xxnor_lower.xinv1.   inv                1.00 
+       37 xcla_8.xu0.xxnor_lower.xinv2.   inv                1.00 
+       38 xcla_8.xu0.xmux.xinv.           inv                1.00 
+       39 xcla_8.xu1.xxnor_upper.xinv1.   inv                1.00 
+       40 xcla_8.xu1.xxnor_upper.xinv2.   inv                1.00 
+       41 xcla_8.xu1.xxnor_lower.xinv1.   inv                1.00 
+       42 xcla_8.xu1.xxnor_lower.xinv2.   inv                1.00 
+       43 xcla_8.xu1.xmux.xinv.           inv                1.00 
+       44 xcla_8.xu2.xxnor_upper.xinv1.   inv                1.00 
+       45 xcla_8.xu2.xxnor_upper.xinv2.   inv                1.00 
+       46 xcla_8.xu2.xxnor_lower.xinv1.   inv                1.00 
+       47 xcla_8.xu2.xxnor_lower.xinv2.   inv                1.00 
+       48 xcla_8.xu2.xmux.xinv.           inv                1.00 
+       49 xcla_8.xu3.xxnor_upper.xinv1.   inv                1.00 
+       50 xcla_8.xu3.xxnor_upper.xinv2.   inv                1.00 
+       51 xcla_8.xu3.xxnor_lower.xinv1.   inv                1.00 
+       52 xcla_8.xu3.xxnor_lower.xinv2.   inv                1.00 
+       53 xcla_8.xu3.xmux.xinv.           inv                1.00 
+       54 xcla_8.xu4.xxnor_upper.xinv1.   inv                1.00 
+       55 xcla_8.xu4.xxnor_upper.xinv2.   inv                1.00 
+       56 xcla_8.xu4.xxnor_lower.xinv1.   inv                1.00 
+       57 xcla_8.xu4.xxnor_lower.xinv2.   inv                1.00 
+       58 xcla_8.xu4.xmux.xinv.           inv                1.00 
+       59 xcla_8.xu5.xxnor_upper.xinv1.   inv                1.00 
+       60 xcla_8.xu5.xxnor_upper.xinv2.   inv                1.00 
+       61 xcla_8.xu5.xxnor_lower.xinv1.   inv                1.00 
+       62 xcla_8.xu5.xxnor_lower.xinv2.   inv                1.00 
+       63 xcla_8.xu5.xmux.xinv.           inv                1.00 
+       64 xcla_8.xu6.xxnor_upper.xinv1.   inv                1.00 
+       65 xcla_8.xu6.xxnor_upper.xinv2.   inv                1.00 
+       66 xcla_8.xu6.xxnor_lower.xinv1.   inv                1.00 
+       67 xcla_8.xu6.xxnor_lower.xinv2.   inv                1.00 
+       68 xcla_8.xu6.xmux.xinv.           inv                1.00 
+       69 xcla_8.xu7.xxnor_upper.xinv1.   inv                1.00 
+       70 xcla_8.xu7.xxnor_upper.xinv2.   inv                1.00 
+       71 xcla_8.xu7.xxnor_lower.xinv1.   inv                1.00 
+       72 xcla_8.xu7.xxnor_lower.xinv2.   inv                1.00 
+       73 xcla_8.xu7.xmux.xinv.           inv                1.00 
+  **info** (CLA_cmos_test.sp:69) DC voltage reset to initial transient source value in source 0:vin1. new dc=0.0000D+00
+  **warning** (v_$vin2:0) pulse rise time is  < or = zero, reset to tstep
+  **warning** (v_$vin2:0) pulse fall time is  < or = zero, reset to tstep
+ 
+
+  
+      
+  **warning** (v_$vin2:0) pulse rise time is  < or = zero, reset to tstep
+  **warning** (v_$vin2:0) pulse fall time is  < or = zero, reset to tstep
+ **info** set option symb=1 internally to help for convergence.
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 3         bypass  = 2.0000    
+  Opening plot unit= 15
+ file=CLA_cmos_test.pa0
+
+  **warning** (v_$vin2:0) pulse rise time is  < or = zero, reset to tstep
+  **warning** (v_$vin2:0) pulse fall time is  < or = zero, reset to tstep
+ **info** dc convergence successful at Newton-Raphson method 
+ ******  
+ .title carry_lookahead addder implement by cmos logic
+
+ ****** operating point information tnom=  25.000 temp=  25.000 ******
+ ****** operating point status is all       simulation time is     0.     
+     node    =voltage       node    =voltage       node    =voltage
+
+ + 0:c0      =   1.8000   0:c1      = 282.4269n  0:c2      = 529.3178n
+ + 0:c3      = 740.6732n  0:c4      = 916.4932n  0:c5      =   1.0568u
+ + 0:c6      =   1.1615u  0:c7      =   1.2307u  0:c8      =   1.2644u
+ + 0:s0      =   1.8000   0:s1      =   1.8000   0:s2      =   1.8000 
+ + 0:s3      =   1.8000   0:s4      =   1.8000   0:s5      =   1.8000 
+ + 0:s6      =   1.8000   0:s7      =   1.8000   0:vdd     =   1.8000 
+ + 0:vss     =   0.       0:x0      =   0.       0:x1      =   0.     
+ + 0:x2      =   0.       0:x3      =   0.       0:x4      =   0.     
+ + 0:x5      =   0.       0:x6      =   0.       0:x7      =   0.     
+ + 0:y0      =   0.       0:y1      =   1.8000   0:y2      =   1.8000 
+ + 0:y3      =   1.8000   0:y4      =   1.8000   0:y5      =   1.8000 
+ + 0:y6      =   1.8000   0:y7      =   1.8000   2:xnor_out=   1.8000 
+ + 3:xnor_out=  40.4004n  4:xnor_out=  40.4003n  5:xnor_out=  40.4003n
+ + 6:xnor_out=  40.4003n  7:xnor_out=  40.4003n  8:xnor_out=  40.4003n
+ + 9:xnor_out=  40.4003n 10:in1_i   =   1.8000  10:in2_i   =   1.8000 
+ +10:n1l_s   =  22.5636n 10:n1r_s   =   1.5721  10:p1l_s   =   1.8000 
+ +10:p1r_s   =   1.8000  11:in1_i   =   9.2607n 11:in2_i   =   9.2606n
+ +11:n1l_s   =   1.5721  11:n1r_s   =  22.5637n 11:p1l_s   =   1.8000 
+ +11:p1r_s   =   1.8000  12:sel_i   =   9.2607n 13:in1_i   =   1.8000 
+ +13:in2_i   =   9.2606n 13:n1l_s   =  20.0278n 13:n1r_s   =  20.2002n
+ +13:p1l_s   =   1.8000  13:p1r_s   = 404.3200m 14:in1_i   =   1.8000 
+ +14:in2_i   =   1.8000  14:n1l_s   =  22.5637n 14:n1r_s   =   1.5721 
+ +14:p1l_s   =   1.8000  14:p1r_s   =   1.8000  15:sel_i   =   1.8000 
+ +16:in1_i   =   1.8000  16:in2_i   =   9.2606n 16:n1l_s   =  20.0278n
+ +16:n1r_s   =  20.2002n 16:p1l_s   =   1.8000  16:p1r_s   = 404.3200m
+ +17:in1_i   =   1.8000  17:in2_i   =   1.8000  17:n1l_s   =  22.5637n
+ +17:n1r_s   =   1.5721  17:p1l_s   =   1.8000  17:p1r_s   =   1.8000 
+ +18:sel_i   =   1.8000  19:in1_i   =   1.8000  19:in2_i   =   9.2606n
+ +19:n1l_s   =  20.0278n 19:n1r_s   =  20.2002n 19:p1l_s   =   1.8000 
+ +19:p1r_s   = 404.3199m 20:in1_i   =   1.8000  20:in2_i   =   1.8000 
+ +20:n1l_s   =  22.5637n 20:n1r_s   =   1.5721  20:p1l_s   =   1.8000 
+ +20:p1r_s   =   1.8000  21:sel_i   =   1.8000  22:in1_i   =   1.8000 
+ +22:in2_i   =   9.2606n 22:n1l_s   =  20.0278n 22:n1r_s   =  20.2002n
+ +22:p1l_s   =   1.8000  22:p1r_s   = 404.3199m 23:in1_i   =   1.8000 
+ +23:in2_i   =   1.8000  23:n1l_s   =  22.5637n 23:n1r_s   =   1.5721 
+ +23:p1l_s   =   1.8000  23:p1r_s   =   1.8000  24:sel_i   =   1.8000 
+ +25:in1_i   =   1.8000  25:in2_i   =   9.2606n 25:n1l_s   =  20.0278n
+ +25:n1r_s   =  20.2002n 25:p1l_s   =   1.8000  25:p1r_s   = 404.3199m
+ +26:in1_i   =   1.8000  26:in2_i   =   1.8000  26:n1l_s   =  22.5637n
+ +26:n1r_s   =   1.5721  26:p1l_s   =   1.8000  26:p1r_s   =   1.8000 
+ +27:sel_i   =   1.8000  28:in1_i   =   1.8000  28:in2_i   =   9.2606n
+ +28:n1l_s   =  20.0278n 28:n1r_s   =  20.2002n 28:p1l_s   =   1.8000 
+ +28:p1r_s   = 404.3199m 29:in1_i   =   1.8000  29:in2_i   =   1.8000 
+ +29:n1l_s   =  22.5637n 29:n1r_s   =   1.5721  29:p1l_s   =   1.8000 
+ +29:p1r_s   =   1.8000  30:sel_i   =   1.8000  31:in1_i   =   1.8000 
+ +31:in2_i   =   9.2606n 31:n1l_s   =  20.0278n 31:n1r_s   =  20.2002n
+ +31:p1l_s   =   1.8000  31:p1r_s   = 404.3199m 32:in1_i   =   1.8000 
+ +32:in2_i   =   1.8000  32:n1l_s   =  22.5637n 32:n1r_s   =   1.5721 
+ +32:p1l_s   =   1.8000  32:p1r_s   =   1.8000  33:sel_i   =   1.8000 
+
+
+ **** voltage sources
+
+ subckt                                                              
+ element   0:vdd       0:vin1      0:vin10     0:vin11     0:vin12   
+  volts       1.8000      0.          1.8000      0.          1.8000 
+  current    -1.4019n     0.        -30.8681p     0.        -30.8680p
+  power       2.5234n     0.         55.5627p     0.         55.5624p
+
+ subckt                                                              
+ element   0:vin13     0:vin14     0:vin15     0:vin16     0:vin17   
+  volts       0.          1.8000      0.          1.8000      1.8000 
+  current     0.        -30.8679p     0.        -30.8679p   -30.8686p
+  power       0.         55.5622p     0.         55.5622p    55.5636p
+
+ subckt                                                              
+ element   0:vin2      0:vin3      0:vin4      0:vin5      0:vin6    
+  volts       0.          0.          1.8000      0.          1.8000 
+  current   275.7471p     0.        -30.8684p     0.        -30.8683p
+  power       0.          0.         55.5632p     0.         55.5630p
+
+ subckt                                                  
+ element   0:vin7      0:vin8      0:vin9      0:vss     
+  volts       0.          1.8000      0.          0.     
+  current     0.        -30.8681p     0.          1.4019n
+  power       0.         55.5626p     0.          0.     
+
+     total voltage source power dissipation=    2.9679n       watts
+
+
+
+
+ **** mosfets
+
+
+ subckt    xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0
+ element  10:mp1l     10:mp2l     10:mp1r     10:mp2r     10:mn1l    
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:p_18.1    0:n_18.1  
+ region    Linear      Linear      Cutoff      Cutoff      Cutoff    
+  id        -46.7884p   -46.7884p    -3.5379a   -25.6682a    20.0862p
+  ibs       1.280e-26   1.399e-23     0.        3.387e-24  -2.448e-24
+  ibd       1.397e-23   2.795e-23   3.387e-24   2.796e-23  -194.5080a
+  vgs        -1.8000     -1.8000   -107.6031n   -56.1090n   -22.5636n
+  vds      -212.5509n  -212.5509n   -51.4942n  -373.6076n     1.8000 
+  vbs         0.        212.5509n     0.         51.4942n   -22.5636n
+  vth      -522.9129m  -522.9130m  -522.9129m  -522.9129m   428.5764m
+  vdsat    -989.6420m  -989.6418m   -56.5018m   -56.5018m    56.0137m
+  vod        -1.2771     -1.2771    522.9128m   522.9129m  -428.5764m
+  beta      228.7604u   228.7604u   273.2624u   273.2624u     1.0154m
+  gam eff   557.0847m   557.0847m   557.0847m   557.0847m   507.4459m
+  gm         24.8641p    24.8641p    90.8440a   659.1012a   655.9135p
+  gds       220.5317u   220.5317u    68.7039p    68.7033p    16.9764p
+  gmb        12.7700p    12.7700p    33.0846a   240.0390a    85.8378p
+  cdtot       1.6766f     1.6766f   856.7116a   856.7114a   670.4137a
+  cgtot       1.1205f     1.1205f   582.5994a   582.5994a   566.8137a
+  cstot       1.6229f     1.6229f   856.7113a   856.7113a   918.3104a
+  cbtot       1.5809f     1.5809f     1.5786f     1.5786f     1.3789f
+  cgs       566.0882a   566.0882a   179.3566a   179.3566a   194.1562a
+  cgd       547.2853a   547.2853a   179.3507a   179.3507a   194.1500a
+
+
+
+ subckt    xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0
+ element  10:mn2l     10:mn1r     10:mn2r     11:mp1l     11:mp2l    
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region    Linear      Cutoff      Cutoff      Cutoff      Cutoff    
+  id         21.8862p    21.0739p    16.5852p   -18.2440a   -10.9621a
+  ibs      -9.838e-27  -169.8784a  -8.162e-27     0.        1.746e-23
+  ibd      -2.428e-24  -194.5080a  -169.8784a   1.746e-23   2.796e-23
+  vgs         1.8000    227.9253m     0.       -425.1018n   265.5435n
+  vds        22.5636n   227.9249m     1.5721   -265.5435n  -159.5582n
+  vbs         0.         -1.5721      0.          0.        265.5435n
+  vth       494.9894m   646.0266m   436.9859m  -522.9129m  -522.9130m
+  vdsat     537.0600m    60.4693m    56.0150m   -56.5018m   -56.5018m
+  vod         1.3050   -418.1013m  -436.9859m   522.9125m   522.9133m
+  beta      771.2118u   999.4676u     1.0151m   273.2624u   273.2624u
+  gam eff   507.4459m   540.5080m   507.4459m   557.0847m   557.0847m
+  gm          9.6511p   703.9219p   536.9254p   468.4647a   281.4829a
+  gds       977.8671u    21.9885p    13.8614p    68.7042p    68.7029p
+  gmb         2.8413p    88.9055p    68.8371p   170.6108a   102.5137a
+  cdtot       1.6402f   670.4137a   686.4051a   856.7115a   856.7114a
+  cgtot       1.0796f   486.1694a   566.8137a   582.5993a   582.5994a
+  cstot       1.5665f   686.4056a   918.3104a   856.7113a   856.7112a
+  cbtot       1.6021f     1.0664f     1.3949f     1.5786f     1.5786f
+  cgs       505.7458a   194.1531a   194.1562a   179.3566a   179.3566a
+  cgd       511.1567a   194.1500a   194.1500a   179.3507a   179.3507a
+
+
+
+ subckt    xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0
+ element  11:mp1r     11:mp2r     11:mn1l     11:mn2l     11:mn1r    
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:n_18.1  
+ region    Linear      Linear      Cutoff      Cutoff      Cutoff    
+  id        -46.7883p   -46.7884p    21.0739p    16.5852p    20.0862p
+  ibs       1.280e-26   1.399e-23  -169.8784a  -8.162e-27  -2.448e-24
+  ibd       1.397e-23   2.795e-23  -194.5080a  -169.8784a  -194.5080a
+  vgs        -1.8000     -1.8000    227.9252m     9.2606n   -13.3030n
+  vds      -212.5508n  -212.5510n   227.9252m     1.5721      1.8000 
+  vbs         0.        212.5508n    -1.5721      0.        -22.5637n
+  vth      -522.9129m  -522.9130m   646.0265m   436.9859m   428.5764m
+  vdsat    -989.6420m  -989.6418m    60.4693m    56.0150m    56.0137m
+  vod        -1.2771     -1.2771   -418.1013m  -436.9859m  -428.5764m
+  beta      228.7604u   228.7604u   999.4676u     1.0151m     1.0154m
+  gam eff   557.0847m   557.0847m   540.5080m   507.4459m   507.4459m
+  gm         24.8641p    24.8642p   703.9216p   536.9255p   655.9137p
+  gds       220.5317u   220.5317u    21.9885p    13.8614p    16.9764p
+  gmb        12.7700p    12.7700p    88.9055p    68.8371p    85.8378p
+  cdtot       1.6766f     1.6766f   670.4137a   686.4052a   670.4137a
+  cgtot       1.1205f     1.1205f   486.1694a   566.8137a   566.8137a
+  cstot       1.6229f     1.6229f   686.4056a   918.3104a   918.3104a
+  cbtot       1.5809f     1.5809f     1.0664f     1.3949f     1.3789f
+  cgs       566.0882a   566.0882a   194.1531a   194.1562a   194.1562a
+  cgd       547.2853a   547.2853a   194.1500a   194.1500a   194.1500a
+
+
+
+ subckt    xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0
+ element  11:mn2r     12:mn1      12:mp1      12:mn2      12:mp2     
+ model     0:n_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Linear      Cutoff      Cutoff      Cutoff    
+  id         21.8862p   273.9470p   1.887e-23   -20.0860p    -5.3825p
+  ibs      -9.838e-27  -1.231e-25   118.3824a  -194.5080a   1.965e-27
+  ibd      -2.428e-24  -3.040e-23   118.3824a  -3.053e-23   118.3824a
+  vgs         1.8000      1.8000      9.2607n    -1.8000   -425.1018n
+  vds        22.5637n   282.4269n   282.4269n    -1.8000     -1.8000 
+  vbs         0.          0.          1.8000     -1.8000      0.     
+  vth       494.9894m   494.9894m  -909.0145m   428.5764m  -511.4959m
+  vdsat     537.0600m   537.0599m   -62.1604m    56.0137m   -56.4732m
+  vod         1.3050      1.3050    909.0142m  -428.5767m   511.4955m
+  beta      771.2118u   771.2119u   204.6762u     1.0154m   276.6692u
+  gam eff   507.4459m   507.4459m   547.4355m   507.4459m   557.0847m
+  gm          9.6511p   120.8023p   5.734e-22   655.9075p   139.4285p
+  gds       977.8672u   977.8663u    66.8040a    16.9762p     1.9517p
+  gmb         2.8413p    35.5646p   1.289e-22    85.8370p    49.5991p
+  cdtot       1.6402f     1.6402f   611.2303a   918.3103a   611.2303a
+  cgtot       1.0796f     1.0796f   489.3666a   566.8137a   582.5992a
+  cstot       1.5665f     1.5665f   611.2303a   670.4137a   856.7112a
+  cbtot       1.6021f     1.6021f   994.4229a     1.3789f     1.3331f
+  cgs       505.7458a   505.7458a   179.3500a   194.1500a   179.3571a
+  cgd       511.1567a   511.1567a   179.3542a   194.1562a   179.3500a
+
+
+
+ subckt    xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1
+ element  13:mp1l     13:mp2l     13:mp1r     13:mp2r     13:mn1l    
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:p_18.1    0:n_18.1  
+ region    Linear      Cutoff      Cutoff      Cutoff      Cutoff    
+  id         -7.1825p    -5.3825p    -4.6238p    -8.4067p     2.3470a
+  ibs       1.965e-27   2.148e-24   1.647e-27    91.7911a  -2.164e-24
+  ibd       2.144e-24   118.3824a    91.7911a   118.3824a  -4.366e-24
+  vgs        -1.8000     32.6286n  -107.6031n  -404.3200m   -20.0278n
+  vds       -32.6286n    -1.8000     -1.3957   -404.3199m    20.3726n
+  vbs         0.         32.6286n     0.          1.3957    -20.0278n
+  vth      -522.9129m  -511.4959m  -514.0604m  -830.3776m   494.9894m
+  vdsat    -989.6420m   -56.4732m   -56.4797m   -60.5989m    56.0358m
+  vod        -1.2771    511.4960m   514.0603m   426.0577m  -494.9894m
+  beta      228.7604u   276.6692u   275.8967u   217.1836u     1.0107m
+  gam eff   557.0847m   557.0847m   557.0847m   549.2166m   507.4459m
+  gm          3.8169p   139.4268p   119.5373p   248.3651p    71.6236a
+  gds       220.5318u     1.9516p     1.8075p     6.3284p   115.2030p
+  gmb         1.9603p    49.5985p    42.7961p    51.8643p     7.5507a
+  cdtot       1.6766f   611.2303a   639.1248a   611.2303a   918.3102a
+  cgtot       1.1205f   582.5992a   582.5992a   489.3657a   566.8136a
+  cstot       1.6229f   856.7112a   856.7112a   639.1268a   918.3102a
+  cbtot       1.5809f     1.3331f     1.3610f     1.0223f     1.6268f
+  cgs       566.0881a   179.3571a   179.3571a   179.3538a   194.1560a
+  cgd       547.2853a   179.3500a   179.3500a   179.3500a   194.1501a
+
+
+
+ subckt    xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1
+ element  13:mn2l     13:mn1r     13:mn2r     14:mp1l     14:mp2l    
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region    Cutoff      Linear      Linear      Linear      Linear    
+  id          2.3073a    19.5937p    19.5937p   -46.7884p   -46.7884p
+  ibs         0.       -2.192e-24  -8.808e-27   1.280e-26   1.399e-23
+  ibd      -2.164e-24  -4.357e-24  -2.174e-24   1.397e-23   2.795e-23
+  vgs         9.2606n     1.8000      1.8000     -1.8000     -1.8000 
+  vds        20.0278n    20.2002n    20.2002n  -212.5512n  -212.5512n
+  vbs         0.        -20.2002n     0.          0.        212.5512n
+  vth       494.9894m   494.9894m   494.9894m  -522.9129m  -522.9130m
+  vdsat      56.0358m   537.0600m   537.0600m  -989.6420m  -989.6416m
+  vod      -494.9894m     1.3050      1.3050     -1.2771     -1.2771 
+  beta        1.0107m   771.2118u   771.2118u   228.7604u   228.7604u
+  gam eff   507.4459m   507.4459m   507.4459m   557.0847m   557.0847m
+  gm         70.4116a     8.6402p     8.6402p    24.8642p    24.8642p
+  gds       115.2031p   977.8671u   977.8672u   220.5317u   220.5317u
+  gmb         7.4230a     2.5437p     2.5437p    12.7701p    12.7701p
+  cdtot     918.3102a     1.6402f     1.6402f     1.6766f     1.6766f
+  cgtot     566.8136a     1.0796f     1.0796f     1.1205f     1.1205f
+  cstot     918.3102a     1.5665f     1.5665f     1.6229f     1.6229f
+  cbtot       1.6268f     1.6021f     1.6021f     1.5809f     1.5809f
+  cgs       194.1560a   505.7458a   505.7458a   566.0882a   566.0882a
+  cgd       194.1501a   511.1567a   511.1567a   547.2853a   547.2853a
+
+
+
+ subckt    xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1
+ element  14:mp1r     14:mp2r     14:mn1l     14:mn2l     14:mn1r    
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:n_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id          1.4396a   -30.6457a    20.0862p    21.8862p    21.0740p
+  ibs         0.       -5.364e-23  -2.448e-24  -9.839e-27  -169.8784a
+  ibd      -5.364e-23   2.796e-23  -194.5080a  -2.428e-24  -194.5080a
+  vgs      -107.6030n  -128.5577n    17.8367n     1.8000    227.9254m
+  vds        20.9536n  -446.0559n     1.8000     22.5637n   227.9251m
+  vbs         0.        -20.9536n   -22.5637n     0.         -1.5721 
+  vth      -522.9129m  -522.9129m   428.5764m   494.9894m   646.0265m
+  vdsat     -56.5018m   -56.5018m    56.0137m   537.0600m    60.4693m
+  vod       522.9128m   522.9128m  -428.5764m     1.3050   -418.1011m
+  beta      273.2624u   273.2624u     1.0154m   771.2118u   999.4676u
+  gam eff   557.0847m   557.0847m   507.4459m   507.4459m   540.5080m
+  gm         36.9656a   786.9126a   655.9144p     9.6512p   703.9263p
+  gds        68.7040p    68.7034p    16.9764p   977.8671u    21.9887p
+  gmb        13.4626a   286.5868a    85.8379p     2.8413p    88.9061p
+  cdtot     856.7113a   856.7114a   670.4137a     1.6402f   670.4137a
+  cgtot     582.5994a   582.5994a   566.8137a     1.0796f   486.1694a
+  cstot     856.7116a   856.7113a   918.3104a     1.5665f   686.4056a
+  cbtot       1.5786f     1.5786f     1.3789f     1.6021f     1.0664f
+  cgs       179.3507a   179.3566a   194.1562a   505.7458a   194.1531a
+  cgd       179.3566a   179.3507a   194.1500a   511.1567a   194.1500a
+
+
+
+ subckt    xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1
+ element  14:mn2r     15:mn1      15:mp1      15:mn2      15:mp2     
+ model     0:n_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id         16.5853p   -20.0858p    -5.3825p   239.4781p   1.649e-23
+  ibs      -8.162e-27  -194.5080a   1.965e-27  -3.063e-23   118.3824a
+  ibd      -169.8784a  -5.721e-23   118.3824a  -5.709e-23   118.3824a
+  vgs       282.4269n    -1.8000   -107.6031n     1.8000   -242.0265n
+  vds         1.5721     -1.8000     -1.8000    246.8910n   246.8910n
+  vbs         0.         -1.8000      0.       -282.4269n     1.8000 
+  vth       436.9859m   428.5764m  -511.4959m   494.9894m  -909.0145m
+  vdsat      56.0150m    56.0137m   -56.4732m   537.0599m   -62.1604m
+  vod      -436.9856m  -428.5769m   511.4958m     1.3050    909.0140m
+  beta        1.0151m     1.0154m   276.6692u   771.2119u   204.6762u
+  gam eff   507.4459m   507.4459m   557.0847m   507.4459m   547.4355m
+  gm        536.9303p   655.9021p   139.4273p   105.6026p   5.013e-22
+  gds        13.8615p    16.9761p     1.9516p   977.8663u    66.8046a
+  gmb        68.8377p    85.8363p    49.5987p    31.0898p   1.127e-22
+  cdtot     686.4052a   918.3102a   611.2303a     1.6402f   611.2303a
+  cgtot     566.8137a   566.8137a   582.5992a     1.0796f   489.3666a
+  cstot     918.3104a   670.4137a   856.7112a     1.5665f   611.2303a
+  cbtot       1.3949f     1.3789f     1.3331f     1.6021f   994.4229a
+  cgs       194.1562a   194.1500a   179.3571a   505.7458a   179.3500a
+  cgd       194.1500a   194.1562a   179.3500a   511.1567a   179.3542a
+
+
+
+ subckt    xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2
+ element  16:mp1l     16:mp2l     16:mp1r     16:mp2r     16:mn1l    
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:p_18.1    0:n_18.1  
+ region    Linear      Cutoff      Cutoff      Cutoff      Cutoff    
+  id         -7.1825p    -5.3825p    -4.6238p    -8.4067p     2.3470a
+  ibs       1.965e-27   2.148e-24   1.647e-27    91.7911a  -2.164e-24
+  ibd       2.144e-24   118.3824a    91.7911a   118.3824a  -4.366e-24
+  vgs        -1.8000     32.6286n  -107.6031n  -404.3200m   -20.0278n
+  vds       -32.6286n    -1.8000     -1.3957   -404.3199m    20.3726n
+  vbs         0.         32.6286n     0.          1.3957    -20.0278n
+  vth      -522.9129m  -511.4959m  -514.0604m  -830.3776m   494.9894m
+  vdsat    -989.6420m   -56.4732m   -56.4797m   -60.5989m    56.0358m
+  vod        -1.2771    511.4960m   514.0603m   426.0577m  -494.9894m
+  beta      228.7604u   276.6692u   275.8967u   217.1836u     1.0107m
+  gam eff   557.0847m   557.0847m   557.0847m   549.2166m   507.4459m
+  gm          3.8169p   139.4268p   119.5373p   248.3649p    71.6236a
+  gds       220.5318u     1.9516p     1.8075p     6.3284p   115.2030p
+  gmb         1.9603p    49.5985p    42.7961p    51.8643p     7.5507a
+  cdtot       1.6766f   611.2303a   639.1248a   611.2303a   918.3102a
+  cgtot       1.1205f   582.5992a   582.5992a   489.3657a   566.8136a
+  cstot       1.6229f   856.7112a   856.7112a   639.1268a   918.3102a
+  cbtot       1.5809f     1.3331f     1.3610f     1.0223f     1.6268f
+  cgs       566.0881a   179.3571a   179.3571a   179.3538a   194.1560a
+  cgd       547.2853a   179.3500a   179.3500a   179.3500a   194.1501a
+
+
+
+ subckt    xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2
+ element  16:mn2l     16:mn1r     16:mn2r     17:mp1l     17:mp2l    
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region    Cutoff      Linear      Linear      Linear      Linear    
+  id          2.3073a    19.5937p    19.5937p   -46.7888p   -46.7888p
+  ibs         0.       -2.192e-24  -8.808e-27   1.280e-26   1.399e-23
+  ibd      -2.164e-24  -4.357e-24  -2.174e-24   1.397e-23   2.795e-23
+  vgs         9.2606n     1.8000      1.8000     -1.8000     -1.8000 
+  vds        20.0278n    20.2002n    20.2002n  -212.5528n  -212.5529n
+  vbs         0.        -20.2002n     0.          0.        212.5528n
+  vth       494.9894m   494.9894m   494.9894m  -522.9129m  -522.9130m
+  vdsat      56.0358m   537.0600m   537.0600m  -989.6420m  -989.6415m
+  vod      -494.9894m     1.3050      1.3050     -1.2771     -1.2771 
+  beta        1.0107m   771.2118u   771.2118u   228.7604u   228.7604u
+  gam eff   507.4459m   507.4459m   507.4459m   557.0847m   557.0847m
+  gm         70.4116a     8.6402p     8.6402p    24.8644p    24.8644p
+  gds       115.2031p   977.8671u   977.8672u   220.5317u   220.5316u
+  gmb         7.4230a     2.5437p     2.5437p    12.7702p    12.7702p
+  cdtot     918.3102a     1.6402f     1.6402f     1.6766f     1.6766f
+  cgtot     566.8136a     1.0796f     1.0796f     1.1205f     1.1205f
+  cstot     918.3102a     1.5665f     1.5665f     1.6229f     1.6229f
+  cbtot       1.6268f     1.6021f     1.6021f     1.5809f     1.5809f
+  cgs       194.1560a   505.7458a   505.7458a   566.0882a   566.0882a
+  cgd       194.1501a   511.1567a   511.1567a   547.2853a   547.2853a
+
+
+
+ subckt    xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2
+ element  17:mp1r     17:mp2r     17:mn1l     17:mn2l     17:mn1r    
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:n_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id        -15.3806a   -13.8257a    20.0862p    21.8862p    21.0741p
+  ibs         0.        1.472e-23  -2.448e-24  -9.839e-27  -169.8783a
+  ibd       1.472e-23   2.796e-23  -194.5080a  -2.428e-24  -194.5080a
+  vgs      -107.6031n   116.2637n    17.8367n     1.8000    227.9256m
+  vds      -223.8682n  -201.2375n     1.8000     22.5637n   227.9253m
+  vbs         0.        223.8682n   -22.5637n     0.         -1.5721 
+  vth      -522.9129m  -522.9130m   428.5764m   494.9894m   646.0265m
+  vdsat     -56.5018m   -56.5018m    56.0137m   537.0600m    60.4693m
+  vod       522.9128m   522.9131m  -428.5764m     1.3050   -418.1009m
+  beta      273.2624u   273.2624u     1.0154m   771.2118u   999.4676u
+  gam eff   557.0847m   557.0847m   507.4459m   507.4459m   540.5080m
+  gm        394.9392a   355.0124a   655.9144p     9.6512p   703.9311p
+  gds        68.7037p    68.7031p    16.9764p   977.8671u    21.9888p
+  gmb       143.8335a   129.2925a    85.8379p     2.8413p    88.9067p
+  cdtot     856.7115a   856.7114a   670.4137a     1.6402f   670.4137a
+  cgtot     582.5994a   582.5994a   566.8137a     1.0796f   486.1694a
+  cstot     856.7113a   856.7112a   918.3104a     1.5665f   686.4056a
+  cbtot       1.5786f     1.5786f     1.3789f     1.6021f     1.0664f
+  cgs       179.3566a   179.3566a   194.1562a   505.7458a   194.1531a
+  cgd       179.3507a   179.3507a   194.1500a   511.1567a   194.1500a
+
+
+
+ subckt    xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2
+ element  17:mn2r     18:mn1      18:mp1      18:mn2      18:mp2     
+ model     0:n_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id         16.5855p   -20.0857p    -5.3825p   205.0095p   1.412e-23
+  ibs      -8.162e-27  -194.5080a   1.965e-27  -5.729e-23   118.3824a
+  ibd      -169.8783a  -8.005e-23   118.3824a  -7.994e-23   118.3824a
+  vgs       529.3178n    -1.8000   -107.6030n     1.8000   -488.9175n
+  vds         1.5721     -1.8000     -1.8000    211.3554n   211.3554n
+  vbs         0.         -1.8000      0.       -529.3178n     1.8000 
+  vth       436.9859m   428.5765m  -511.4959m   494.9895m  -909.0144m
+  vdsat      56.0150m    56.0137m   -56.4732m   537.0599m   -62.1604m
+  vod      -436.9854m  -428.5772m   511.4958m     1.3050    909.0137m
+  beta        1.0151m     1.0154m   276.6692u   771.2119u   204.6762u
+  gam eff   507.4459m   507.4459m   557.0847m   507.4459m   547.4355m
+  gm        536.9345p   655.8969p   139.4273p    90.4030p   4.291e-22
+  gds        13.8616p    16.9759p     1.9516p   977.8663u    66.8052a
+  gmb        68.8383p    85.8356p    49.5987p    26.6149p   9.649e-23
+  cdtot     686.4052a   918.3102a   611.2303a     1.6402f   611.2303a
+  cgtot     566.8136a   566.8137a   582.5992a     1.0796f   489.3666a
+  cstot     918.3104a   670.4137a   856.7112a     1.5665f   611.2303a
+  cbtot       1.3949f     1.3789f     1.3331f     1.6021f   994.4230a
+  cgs       194.1562a   194.1500a   179.3571a   505.7458a   179.3500a
+  cgd       194.1500a   194.1562a   179.3500a   511.1567a   179.3542a
+
+
+
+ subckt    xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3
+ element  19:mp1l     19:mp2l     19:mp1r     19:mp2r     19:mn1l    
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:p_18.1    0:n_18.1  
+ region    Linear      Cutoff      Cutoff      Cutoff      Cutoff    
+  id         -7.1825p    -5.3825p    -4.6238p    -8.4067p     2.3470a
+  ibs       1.965e-27   2.148e-24   1.647e-27    91.7911a  -2.164e-24
+  ibd       2.144e-24   118.3824a    91.7911a   118.3824a  -4.366e-24
+  vgs        -1.8000     32.6286n  -107.6031n  -404.3199m   -20.0278n
+  vds       -32.6286n    -1.8000     -1.3957   -404.3199m    20.3725n
+  vbs         0.         32.6286n     0.          1.3957    -20.0278n
+  vth      -522.9129m  -511.4959m  -514.0604m  -830.3776m   494.9894m
+  vdsat    -989.6420m   -56.4732m   -56.4797m   -60.5989m    56.0358m
+  vod        -1.2771    511.4960m   514.0603m   426.0577m  -494.9894m
+  beta      228.7604u   276.6692u   275.8967u   217.1836u     1.0107m
+  gam eff   557.0847m   557.0847m   557.0847m   549.2166m   507.4459m
+  gm          3.8169p   139.4268p   119.5373p   248.3648p    71.6236a
+  gds       220.5318u     1.9516p     1.8075p     6.3284p   115.2030p
+  gmb         1.9603p    49.5985p    42.7961p    51.8643p     7.5507a
+  cdtot       1.6766f   611.2303a   639.1248a   611.2303a   918.3102a
+  cgtot       1.1205f   582.5992a   582.5992a   489.3657a   566.8136a
+  cstot       1.6229f   856.7112a   856.7112a   639.1268a   918.3102a
+  cbtot       1.5809f     1.3331f     1.3610f     1.0223f     1.6268f
+  cgs       566.0881a   179.3571a   179.3571a   179.3538a   194.1560a
+  cgd       547.2853a   179.3500a   179.3500a   179.3500a   194.1501a
+
+
+
+ subckt    xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3
+ element  19:mn2l     19:mn1r     19:mn2r     20:mp1l     20:mp2l    
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region    Cutoff      Linear      Linear      Linear      Linear    
+  id          2.3073a    19.5937p    19.5937p   -46.7887p   -46.7887p
+  ibs         0.       -2.192e-24  -8.808e-27   1.280e-26   1.399e-23
+  ibd      -2.164e-24  -4.357e-24  -2.174e-24   1.397e-23   2.795e-23
+  vgs         9.2606n     1.8000      1.8000     -1.8000     -1.8000 
+  vds        20.0278n    20.2002n    20.2002n  -212.5524n  -212.5525n
+  vbs         0.        -20.2002n     0.          0.        212.5524n
+  vth       494.9894m   494.9894m   494.9894m  -522.9129m  -522.9130m
+  vdsat      56.0358m   537.0600m   537.0600m  -989.6420m  -989.6413m
+  vod      -494.9894m     1.3050      1.3050     -1.2771     -1.2771 
+  beta        1.0107m   771.2118u   771.2118u   228.7604u   228.7604u
+  gam eff   507.4459m   507.4459m   507.4459m   557.0847m   557.0847m
+  gm         70.4116a     8.6402p     8.6402p    24.8643p    24.8643p
+  gds       115.2031p   977.8671u   977.8672u   220.5317u   220.5316u
+  gmb         7.4230a     2.5437p     2.5437p    12.7701p    12.7701p
+  cdtot     918.3102a     1.6402f     1.6402f     1.6766f     1.6766f
+  cgtot     566.8136a     1.0796f     1.0796f     1.1205f     1.1205f
+  cstot     918.3102a     1.5665f     1.5665f     1.6229f     1.6229f
+  cbtot       1.6268f     1.6021f     1.6021f     1.5809f     1.5809f
+  cgs       194.1560a   505.7458a   505.7458a   566.0882a   566.0882a
+  cgd       194.1501a   511.1567a   511.1567a   547.2853a   547.2853a
+
+
+
+ subckt    xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3
+ element  20:mp1r     20:mp2r     20:mn1l     20:mn2l     20:mn1r    
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:n_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id        -16.6747a   -12.5315a    20.0862p    21.8862p    21.0742p
+  ibs         0.        1.596e-23  -2.448e-24  -9.839e-27  -169.8783a
+  ibd       1.596e-23   2.796e-23  -194.5080a  -2.428e-24  -194.5080a
+  vgs      -107.6030n   135.0988n    17.8367n     1.8000    227.9257m
+  vds      -242.7041n  -182.4008n     1.8000     22.5637n   227.9254m
+  vbs         0.        242.7041n   -22.5637n     0.         -1.5721 
+  vth      -522.9129m  -522.9130m   428.5764m   494.9894m   646.0265m
+  vdsat     -56.5018m   -56.5018m    56.0137m   537.0600m    60.4693m
+  vod       522.9128m   522.9131m  -428.5764m     1.3050   -418.1008m
+  beta      273.2624u   273.2624u     1.0154m   771.2118u   999.4676u
+  gam eff   557.0847m   557.0847m   507.4459m   507.4459m   540.5080m
+  gm        428.1687a   321.7814a   655.9144p     9.6512p   703.9336p
+  gds        68.7036p    68.7031p    16.9764p   977.8671u    21.9889p
+  gmb       155.9353a   117.1900a    85.8379p     2.8413p    88.9070p
+  cdtot     856.7115a   856.7114a   670.4137a     1.6402f   670.4137a
+  cgtot     582.5994a   582.5994a   566.8137a     1.0796f   486.1694a
+  cstot     856.7113a   856.7112a   918.3104a     1.5665f   686.4056a
+  cbtot       1.5786f     1.5786f     1.3789f     1.6021f     1.0664f
+  cgs       179.3566a   179.3566a   194.1562a   505.7458a   194.1531a
+  cgd       179.3507a   179.3507a   194.1500a   511.1567a   194.1500a
+
+
+
+ subckt    xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3
+ element  20:mn2r     21:mn1      21:mp1      21:mn2      21:mp2     
+ model     0:n_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id         16.5856p   -20.0855p    -5.3825p   170.5409p   1.175e-23
+  ibs      -8.162e-27  -194.5080a   1.965e-27  -8.011e-23   118.3824a
+  ibd      -169.8783a  -9.905e-23   118.3823a  -9.896e-23   118.3823a
+  vgs       740.6732n    -1.8000   -107.6031n     1.8000   -700.2729n
+  vds         1.5721     -1.8000     -1.8000    175.8199n   175.8199n
+  vbs         0.         -1.8000      0.       -740.6732n     1.8000 
+  vth       436.9859m   428.5765m  -511.4959m   494.9895m  -909.0144m
+  vdsat      56.0150m    56.0137m   -56.4732m   537.0598m   -62.1604m
+  vod      -436.9852m  -428.5774m   511.4958m     1.3050    909.0135m
+  beta        1.0151m     1.0154m   276.6692u   771.2120u   204.6762u
+  gam eff   507.4459m   507.4459m   557.0847m   507.4459m   547.4355m
+  gm        536.9381p   655.8925p   139.4273p    75.2034p   3.570e-22
+  gds        13.8617p    16.9758p     1.9516p   977.8663u    66.8057a
+  gmb        68.8387p    85.8350p    49.5987p    22.1401p   8.027e-23
+  cdtot     686.4052a   918.3101a   611.2303a     1.6402f   611.2303a
+  cgtot     566.8136a   566.8137a   582.5992a     1.0796f   489.3666a
+  cstot     918.3104a   670.4137a   856.7112a     1.5665f   611.2303a
+  cbtot       1.3949f     1.3789f     1.3331f     1.6021f   994.4230a
+  cgs       194.1562a   194.1500a   179.3571a   505.7458a   179.3500a
+  cgd       194.1500a   194.1562a   179.3500a   511.1567a   179.3542a
+
+
+
+ subckt    xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4
+ element  22:mp1l     22:mp2l     22:mp1r     22:mp2r     22:mn1l    
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:p_18.1    0:n_18.1  
+ region    Linear      Cutoff      Cutoff      Cutoff      Cutoff    
+  id         -7.1825p    -5.3825p    -4.6238p    -8.4067p     2.3470a
+  ibs       1.965e-27   2.148e-24   1.647e-27    91.7911a  -2.164e-24
+  ibd       2.144e-24   118.3824a    91.7911a   118.3824a  -4.366e-24
+  vgs        -1.8000     32.6286n  -107.6031n  -404.3199m   -20.0278n
+  vds       -32.6286n    -1.8000     -1.3957   -404.3199m    20.3725n
+  vbs         0.         32.6286n     0.          1.3957    -20.0278n
+  vth      -522.9129m  -511.4959m  -514.0604m  -830.3776m   494.9894m
+  vdsat    -989.6420m   -56.4732m   -56.4797m   -60.5989m    56.0358m
+  vod        -1.2771    511.4960m   514.0603m   426.0577m  -494.9894m
+  beta      228.7604u   276.6692u   275.8967u   217.1836u     1.0107m
+  gam eff   557.0847m   557.0847m   557.0847m   549.2166m   507.4459m
+  gm          3.8169p   139.4268p   119.5373p   248.3648p    71.6236a
+  gds       220.5318u     1.9516p     1.8075p     6.3284p   115.2030p
+  gmb         1.9603p    49.5985p    42.7961p    51.8643p     7.5507a
+  cdtot       1.6766f   611.2303a   639.1248a   611.2303a   918.3102a
+  cgtot       1.1205f   582.5992a   582.5992a   489.3657a   566.8136a
+  cstot       1.6229f   856.7112a   856.7112a   639.1268a   918.3102a
+  cbtot       1.5809f     1.3331f     1.3610f     1.0223f     1.6268f
+  cgs       566.0881a   179.3571a   179.3571a   179.3538a   194.1560a
+  cgd       547.2853a   179.3500a   179.3500a   179.3500a   194.1501a
+
+
+
+ subckt    xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4
+ element  22:mn2l     22:mn1r     22:mn2r     23:mp1l     23:mp2l    
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region    Cutoff      Linear      Linear      Linear      Linear    
+  id          2.3073a    19.5937p    19.5937p   -46.7888p   -46.7888p
+  ibs         0.       -2.192e-24  -8.808e-27   1.280e-26   1.399e-23
+  ibd      -2.164e-24  -4.357e-24  -2.174e-24   1.397e-23   2.795e-23
+  vgs         9.2606n     1.8000      1.8000     -1.8000     -1.8000 
+  vds        20.0278n    20.2002n    20.2002n  -212.5528n  -212.5530n
+  vbs         0.        -20.2002n     0.          0.        212.5528n
+  vth       494.9894m   494.9894m   494.9894m  -522.9129m  -522.9130m
+  vdsat      56.0358m   537.0600m   537.0600m  -989.6420m  -989.6412m
+  vod      -494.9894m     1.3050      1.3050     -1.2771     -1.2771 
+  beta        1.0107m   771.2118u   771.2118u   228.7604u   228.7604u
+  gam eff   507.4459m   507.4459m   507.4459m   557.0847m   557.0847m
+  gm         70.4116a     8.6402p     8.6402p    24.8644p    24.8644p
+  gds       115.2031p   977.8671u   977.8672u   220.5317u   220.5316u
+  gmb         7.4230a     2.5437p     2.5437p    12.7702p    12.7702p
+  cdtot     918.3102a     1.6402f     1.6402f     1.6766f     1.6766f
+  cgtot     566.8136a     1.0796f     1.0796f     1.1205f     1.1205f
+  cstot     918.3102a     1.5665f     1.5665f     1.6229f     1.6229f
+  cbtot       1.6268f     1.6021f     1.6021f     1.5809f     1.5809f
+  cgs       194.1560a   505.7458a   505.7458a   566.0882a   566.0882a
+  cgd       194.1501a   511.1567a   511.1567a   547.2853a   547.2852a
+
+
+
+ subckt    xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4
+ element  23:mp1r     23:mp2r     23:mn1l     23:mn2l     23:mn1r    
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:n_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id        -19.5293a    -9.6770a    20.0862p    21.8862p    21.0743p
+  ibs         0.        1.869e-23  -2.448e-24  -9.839e-27  -169.8783a
+  ibd       1.869e-23   2.796e-23  -194.5080a  -2.428e-24  -194.5080a
+  vgs      -107.6030n   176.6480n    17.8367n     1.8000    227.9258m
+  vds      -284.2537n  -140.8521n     1.8000     22.5637n   227.9255m
+  vbs         0.        284.2537n   -22.5637n     0.         -1.5721 
+  vth      -522.9129m  -522.9130m   428.5764m   494.9894m   646.0265m
+  vdsat     -56.5018m   -56.5018m    56.0137m   537.0600m    60.4693m
+  vod       522.9128m   522.9132m  -428.5764m     1.3050   -418.1007m
+  beta      273.2624u   273.2624u     1.0154m   771.2118u   999.4676u
+  gam eff   557.0847m   557.0847m   507.4459m   507.4459m   540.5080m
+  gm        501.4686a   248.4834a   655.9144p     9.6512p   703.9367p
+  gds        68.7036p    68.7031p    16.9764p   977.8671u    21.9890p
+  gmb       182.6305a    90.4955a    85.8379p     2.8413p    88.9073p
+  cdtot     856.7115a   856.7114a   670.4137a     1.6402f   670.4137a
+  cgtot     582.5994a   582.5994a   566.8137a     1.0796f   486.1694a
+  cstot     856.7113a   856.7112a   918.3104a     1.5665f   686.4056a
+  cbtot       1.5786f     1.5786f     1.3789f     1.6021f     1.0664f
+  cgs       179.3566a   179.3566a   194.1562a   505.7458a   194.1531a
+  cgd       179.3507a   179.3507a   194.1500a   511.1567a   194.1500a
+
+
+
+ subckt    xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4
+ element  23:mn2r     24:mn1      24:mp1      24:mn2      24:mp2     
+ model     0:n_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id         16.5857p   -20.0854p    -5.3825p   136.0726p   9.372e-24
+  ibs      -8.162e-27  -194.5080a   1.965e-27  -9.910e-23   118.3823a
+  ibd      -169.8783a  -1.142e-22   118.3823a  -1.141e-22   118.3823a
+  vgs       916.4932n    -1.8000   -107.6031n     1.8000   -876.0929n
+  vds         1.5721     -1.8000     -1.8000    140.2846n   140.2846n
+  vbs         0.         -1.8000      0.       -916.4932n     1.8000 
+  vth       436.9859m   428.5765m  -511.4959m   494.9895m  -909.0144m
+  vdsat      56.0150m    56.0137m   -56.4732m   537.0598m   -62.1604m
+  vod      -436.9850m  -428.5775m   511.4958m     1.3050    909.0133m
+  beta        1.0151m     1.0154m   276.6692u   771.2120u   204.6762u
+  gam eff   507.4459m   507.4459m   557.0847m   507.4459m   547.4355m
+  gm        536.9411p   655.8891p   139.4273p    60.0039p   2.848e-22
+  gds        13.8618p    16.9757p     1.9516p   977.8663u    66.8061a
+  gmb        68.8391p    85.8346p    49.5987p    17.6653p   6.404e-23
+  cdtot     686.4052a   918.3101a   611.2303a     1.6402f   611.2303a
+  cgtot     566.8136a   566.8137a   582.5992a     1.0796f   489.3666a
+  cstot     918.3104a   670.4137a   856.7112a     1.5665f   611.2303a
+  cbtot       1.3949f     1.3789f     1.3331f     1.6021f   994.4230a
+  cgs       194.1562a   194.1500a   179.3571a   505.7458a   179.3500a
+  cgd       194.1500a   194.1562a   179.3500a   511.1567a   179.3542a
+
+
+
+ subckt    xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5
+ element  25:mp1l     25:mp2l     25:mp1r     25:mp2r     25:mn1l    
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:p_18.1    0:n_18.1  
+ region    Linear      Cutoff      Cutoff      Cutoff      Cutoff    
+  id         -7.1825p    -5.3825p    -4.6238p    -8.4067p     2.3470a
+  ibs       1.965e-27   2.148e-24   1.647e-27    91.7911a  -2.164e-24
+  ibd       2.144e-24   118.3824a    91.7911a   118.3824a  -4.366e-24
+  vgs        -1.8000     32.6286n  -107.6031n  -404.3199m   -20.0278n
+  vds       -32.6286n    -1.8000     -1.3957   -404.3199m    20.3725n
+  vbs         0.         32.6286n     0.          1.3957    -20.0278n
+  vth      -522.9129m  -511.4959m  -514.0604m  -830.3776m   494.9894m
+  vdsat    -989.6420m   -56.4732m   -56.4797m   -60.5989m    56.0358m
+  vod        -1.2771    511.4960m   514.0603m   426.0577m  -494.9894m
+  beta      228.7604u   276.6692u   275.8967u   217.1836u     1.0107m
+  gam eff   557.0847m   557.0847m   557.0847m   549.2166m   507.4459m
+  gm          3.8169p   139.4268p   119.5373p   248.3648p    71.6236a
+  gds       220.5318u     1.9516p     1.8075p     6.3284p   115.2030p
+  gmb         1.9603p    49.5985p    42.7961p    51.8643p     7.5507a
+  cdtot       1.6766f   611.2303a   639.1248a   611.2303a   918.3102a
+  cgtot       1.1205f   582.5992a   582.5992a   489.3657a   566.8136a
+  cstot       1.6229f   856.7112a   856.7112a   639.1268a   918.3102a
+  cbtot       1.5809f     1.3331f     1.3610f     1.0223f     1.6268f
+  cgs       566.0881a   179.3571a   179.3571a   179.3538a   194.1560a
+  cgd       547.2853a   179.3500a   179.3500a   179.3500a   194.1501a
+
+
+
+ subckt    xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5
+ element  25:mn2l     25:mn1r     25:mn2r     26:mp1l     26:mp2l    
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region    Cutoff      Linear      Linear      Linear      Linear    
+  id          2.3073a    19.5937p    19.5937p   -46.7890p   -46.7890p
+  ibs         0.       -2.192e-24  -8.808e-27   1.280e-26   1.399e-23
+  ibd      -2.164e-24  -4.357e-24  -2.174e-24   1.397e-23   2.795e-23
+  vgs         9.2606n     1.8000      1.8000     -1.8000     -1.8000 
+  vds        20.0278n    20.2002n    20.2002n  -212.5537n  -212.5539n
+  vbs         0.        -20.2002n     0.          0.        212.5537n
+  vth       494.9894m   494.9894m   494.9894m  -522.9129m  -522.9130m
+  vdsat      56.0358m   537.0600m   537.0600m  -989.6420m  -989.6411m
+  vod      -494.9894m     1.3050      1.3050     -1.2771     -1.2771 
+  beta        1.0107m   771.2118u   771.2118u   228.7604u   228.7604u
+  gam eff   507.4459m   507.4459m   507.4459m   557.0847m   557.0847m
+  gm         70.4116a     8.6402p     8.6402p    24.8645p    24.8645p
+  gds       115.2031p   977.8671u   977.8672u   220.5317u   220.5316u
+  gmb         7.4230a     2.5437p     2.5437p    12.7702p    12.7702p
+  cdtot     918.3102a     1.6402f     1.6402f     1.6766f     1.6766f
+  cgtot     566.8136a     1.0796f     1.0796f     1.1205f     1.1205f
+  cstot     918.3102a     1.5665f     1.5665f     1.6229f     1.6229f
+  cbtot       1.6268f     1.6021f     1.6021f     1.5809f     1.5809f
+  cgs       194.1560a   505.7458a   505.7458a   566.0882a   566.0882a
+  cgd       194.1501a   511.1567a   511.1567a   547.2853a   547.2852a
+
+
+
+ subckt    xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5
+ element  26:mp1r     26:mp2r     26:mn1l     26:mn2l     26:mn1r    
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:n_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id        -17.5258a   -11.6806a    20.0862p    21.8862p    21.0744p
+  ibs         0.        1.678e-23  -2.448e-24  -9.839e-27  -169.8783a
+  ibd       1.678e-23   2.796e-23  -194.5080a  -2.428e-24  -194.5080a
+  vgs      -107.6030n   147.4861n    17.8367n     1.8000    227.9259m
+  vds      -255.0924n  -170.0152n     1.8000     22.5637n   227.9256m
+  vbs         0.        255.0924n   -22.5637n     0.         -1.5721 
+  vth      -522.9129m  -522.9130m   428.5764m   494.9894m   646.0265m
+  vdsat     -56.5018m   -56.5018m    56.0137m   537.0600m    60.4693m
+  vod       522.9128m   522.9131m  -428.5764m     1.3050   -418.1006m
+  beta      273.2624u   273.2624u     1.0154m   771.2118u   999.4676u
+  gam eff   557.0847m   557.0847m   507.4459m   507.4459m   540.5080m
+  gm        450.0234a   299.9315a   655.9144p     9.6512p   703.9394p
+  gds        68.7036p    68.7031p    16.9764p   977.8671u    21.9891p
+  gmb       163.8947a   109.2324a    85.8379p     2.8413p    88.9077p
+  cdtot     856.7115a   856.7114a   670.4137a     1.6402f   670.4137a
+  cgtot     582.5994a   582.5994a   566.8137a     1.0796f   486.1694a
+  cstot     856.7113a   856.7112a   918.3104a     1.5665f   686.4056a
+  cbtot       1.5786f     1.5786f     1.3789f     1.6021f     1.0664f
+  cgs       179.3566a   179.3566a   194.1562a   505.7458a   194.1531a
+  cgd       179.3507a   179.3507a   194.1500a   511.1567a   194.1500a
+
+
+
+ subckt    xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5
+ element  26:mn2r     27:mn1      27:mp1      27:mn2      27:mp2     
+ model     0:n_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id         16.5858p   -20.0854p    -5.3825p   101.6043p   6.998e-24
+  ibs      -8.162e-27  -194.5080a   1.965e-27  -1.142e-22   118.3823a
+  ibd      -169.8783a  -1.255e-22   118.3823a  -1.255e-22   118.3823a
+  vgs         1.0568u    -1.8000   -107.6031n     1.8000     -1.0164u
+  vds         1.5721     -1.8000     -1.8000    104.7494n   104.7494n
+  vbs         0.         -1.8000      0.         -1.0568u     1.8000 
+  vth       436.9859m   428.5765m  -511.4959m   494.9895m  -909.0143m
+  vdsat      56.0150m    56.0137m   -56.4732m   537.0598m   -62.1604m
+  vod      -436.9849m  -428.5777m   511.4958m     1.3050    909.0132m
+  beta        1.0151m     1.0154m   276.6692u   771.2120u   204.6762u
+  gam eff   507.4459m   507.4459m   557.0847m   507.4459m   547.4355m
+  gm        536.9435p   655.8865p   139.4273p    44.8045p   2.127e-22
+  gds        13.8619p    16.9757p     1.9516p   977.8663u    66.8064a
+  gmb        68.8394p    85.8342p    49.5987p    13.1906p   4.782e-23
+  cdtot     686.4052a   918.3100a   611.2303a     1.6402f   611.2303a
+  cgtot     566.8136a   566.8137a   582.5992a     1.0796f   489.3666a
+  cstot     918.3104a   670.4137a   856.7112a     1.5665f   611.2303a
+  cbtot       1.3949f     1.3789f     1.3331f     1.6021f   994.4230a
+  cgs       194.1562a   194.1500a   179.3571a   505.7458a   179.3500a
+  cgd       194.1500a   194.1562a   179.3500a   511.1567a   179.3542a
+
+
+
+ subckt    xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6
+ element  28:mp1l     28:mp2l     28:mp1r     28:mp2r     28:mn1l    
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:p_18.1    0:n_18.1  
+ region    Linear      Cutoff      Cutoff      Cutoff      Cutoff    
+  id         -7.1825p    -5.3825p    -4.6238p    -8.4067p     2.3470a
+  ibs       1.965e-27   2.148e-24   1.647e-27    91.7911a  -2.164e-24
+  ibd       2.144e-24   118.3824a    91.7911a   118.3824a  -4.366e-24
+  vgs        -1.8000     32.6286n  -107.6031n  -404.3199m   -20.0278n
+  vds       -32.6286n    -1.8000     -1.3957   -404.3199m    20.3725n
+  vbs         0.         32.6286n     0.          1.3957    -20.0278n
+  vth      -522.9129m  -511.4959m  -514.0604m  -830.3776m   494.9894m
+  vdsat    -989.6420m   -56.4732m   -56.4797m   -60.5989m    56.0358m
+  vod        -1.2771    511.4960m   514.0603m   426.0577m  -494.9894m
+  beta      228.7604u   276.6692u   275.8967u   217.1836u     1.0107m
+  gam eff   557.0847m   557.0847m   557.0847m   549.2166m   507.4459m
+  gm          3.8169p   139.4268p   119.5373p   248.3648p    71.6236a
+  gds       220.5318u     1.9516p     1.8075p     6.3284p   115.2030p
+  gmb         1.9603p    49.5985p    42.7961p    51.8643p     7.5507a
+  cdtot       1.6766f   611.2303a   639.1248a   611.2303a   918.3102a
+  cgtot       1.1205f   582.5992a   582.5992a   489.3657a   566.8136a
+  cstot       1.6229f   856.7112a   856.7112a   639.1268a   918.3102a
+  cbtot       1.5809f     1.3331f     1.3610f     1.0223f     1.6268f
+  cgs       566.0881a   179.3571a   179.3571a   179.3538a   194.1560a
+  cgd       547.2853a   179.3500a   179.3500a   179.3500a   194.1501a
+
+
+
+ subckt    xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6
+ element  28:mn2l     28:mn1r     28:mn2r     29:mp1l     29:mp2l    
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region    Cutoff      Linear      Linear      Linear      Linear    
+  id          2.3073a    19.5937p    19.5937p   -46.7890p   -46.7890p
+  ibs         0.       -2.192e-24  -8.808e-27   1.280e-26   1.399e-23
+  ibd      -2.164e-24  -4.357e-24  -2.174e-24   1.397e-23   2.795e-23
+  vgs         9.2606n     1.8000      1.8000     -1.8000     -1.8000 
+  vds        20.0278n    20.2002n    20.2002n  -212.5539n  -212.5541n
+  vbs         0.        -20.2002n     0.          0.        212.5539n
+  vth       494.9894m   494.9894m   494.9894m  -522.9129m  -522.9130m
+  vdsat      56.0358m   537.0600m   537.0600m  -989.6420m  -989.6411m
+  vod      -494.9894m     1.3050      1.3050     -1.2771     -1.2771 
+  beta        1.0107m   771.2118u   771.2118u   228.7604u   228.7604u
+  gam eff   507.4459m   507.4459m   507.4459m   557.0847m   557.0847m
+  gm         70.4116a     8.6402p     8.6402p    24.8645p    24.8645p
+  gds       115.2031p   977.8671u   977.8672u   220.5317u   220.5316u
+  gmb         7.4230a     2.5437p     2.5437p    12.7702p    12.7702p
+  cdtot     918.3102a     1.6402f     1.6402f     1.6766f     1.6766f
+  cgtot     566.8136a     1.0796f     1.0796f     1.1205f     1.1205f
+  cstot     918.3102a     1.5665f     1.5665f     1.6229f     1.6229f
+  cbtot       1.6268f     1.6021f     1.6021f     1.5809f     1.5809f
+  cgs       194.1560a   505.7458a   505.7458a   566.0882a   566.0882a
+  cgd       194.1501a   511.1567a   511.1567a   547.2853a   547.2852a
+
+
+
+ subckt    xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6
+ element  29:mp1r     29:mp2r     29:mn1l     29:mn2l     29:mn1r    
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:n_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id          1.1116a   -30.3180a    20.0862p    21.8862p    21.0745p
+  ibs         0.       -4.142e-23  -2.448e-24  -9.839e-27  -169.8783a
+  ibd      -4.142e-23   2.796e-23  -194.5080a  -2.428e-24  -194.5080a
+  vgs      -107.6030n  -123.7853n    17.8367n     1.8000    227.9260m
+  vds        16.1789n  -441.2869n     1.8000     22.5637n   227.9257m
+  vbs         0.        -16.1789n   -22.5637n     0.         -1.5721 
+  vth      -522.9129m  -522.9129m   428.5764m   494.9894m   646.0265m
+  vdsat     -56.5018m   -56.5018m    56.0137m   537.0600m    60.4693m
+  vod       522.9128m   522.9128m  -428.5764m     1.3050   -418.1005m
+  beta      273.2624u   273.2624u     1.0154m   771.2118u   999.4676u
+  gam eff   557.0847m   557.0847m   507.4459m   507.4459m   540.5080m
+  gm         28.5422a   778.4991a   655.9144p     9.6512p   703.9421p
+  gds        68.7040p    68.7034p    16.9764p   977.8671u    21.9892p
+  gmb        10.3948a   283.5227a    85.8379p     2.8413p    88.9080p
+  cdtot     856.7113a   856.7114a   670.4137a     1.6402f   670.4137a
+  cgtot     582.5994a   582.5994a   566.8137a     1.0796f   486.1694a
+  cstot     856.7116a   856.7113a   918.3104a     1.5665f   686.4056a
+  cbtot       1.5786f     1.5786f     1.3789f     1.6021f     1.0664f
+  cgs       179.3507a   179.3566a   194.1562a   505.7458a   194.1531a
+  cgd       179.3566a   179.3507a   194.1500a   511.1567a   194.1500a
+
+
+
+ subckt    xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6
+ element  29:mn2r     30:mn1      30:mp1      30:mn2      30:mp2     
+ model     0:n_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id         16.5858p   -20.0853p    -5.3825p    67.1361p   4.624e-24
+  ibs      -8.163e-27  -194.5080a   1.965e-27  -1.255e-22   118.3823a
+  ibd      -169.8783a  -1.330e-22   118.3823a  -1.330e-22   118.3823a
+  vgs         1.1615u    -1.8000   -107.6031n     1.8000     -1.1211u
+  vds         1.5721     -1.8000     -1.8000     69.2143n    69.2143n
+  vbs         0.         -1.8000      0.         -1.1615u     1.8000 
+  vth       436.9859m   428.5765m  -511.4959m   494.9896m  -909.0143m
+  vdsat      56.0150m    56.0137m   -56.4732m   537.0597m   -62.1604m
+  vod      -436.9848m  -428.5777m   511.4958m     1.3050    909.0131m
+  beta        1.0151m     1.0154m   276.6692u   771.2121u   204.6762u
+  gam eff   507.4459m   507.4459m   557.0847m   507.4459m   547.4355m
+  gm        536.9452p   655.8848p   139.4273p    29.6050p   1.405e-22
+  gds        13.8619p    16.9756p     1.9516p   977.8663u    66.8066a
+  gmb        68.8396p    85.8340p    49.5987p     8.7158p   3.160e-23
+  cdtot     686.4052a   918.3100a   611.2303a     1.6402f   611.2303a
+  cgtot     566.8136a   566.8137a   582.5992a     1.0796f   489.3666a
+  cstot     918.3104a   670.4137a   856.7112a     1.5665f   611.2303a
+  cbtot       1.3949f     1.3789f     1.3331f     1.6021f   994.4230a
+  cgs       194.1562a   194.1500a   179.3571a   505.7458a   179.3500a
+  cgd       194.1500a   194.1562a   179.3500a   511.1567a   179.3542a
+
+
+
+ subckt    xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7
+ element  31:mp1l     31:mp2l     31:mp1r     31:mp2r     31:mn1l    
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:p_18.1    0:n_18.1  
+ region    Linear      Cutoff      Cutoff      Cutoff      Cutoff    
+  id         -7.1825p    -5.3825p    -4.6238p    -8.4067p     2.3470a
+  ibs       1.965e-27   2.148e-24   1.647e-27    91.7911a  -2.164e-24
+  ibd       2.144e-24   118.3824a    91.7911a   118.3824a  -4.366e-24
+  vgs        -1.8000     32.6286n  -107.6031n  -404.3199m   -20.0278n
+  vds       -32.6286n    -1.8000     -1.3957   -404.3199m    20.3725n
+  vbs         0.         32.6286n     0.          1.3957    -20.0278n
+  vth      -522.9129m  -511.4959m  -514.0604m  -830.3776m   494.9894m
+  vdsat    -989.6420m   -56.4732m   -56.4797m   -60.5989m    56.0358m
+  vod        -1.2771    511.4960m   514.0603m   426.0577m  -494.9894m
+  beta      228.7604u   276.6692u   275.8967u   217.1836u     1.0107m
+  gam eff   557.0847m   557.0847m   557.0847m   549.2166m   507.4459m
+  gm          3.8169p   139.4268p   119.5373p   248.3648p    71.6236a
+  gds       220.5318u     1.9516p     1.8075p     6.3284p   115.2030p
+  gmb         1.9603p    49.5985p    42.7961p    51.8643p     7.5507a
+  cdtot       1.6766f   611.2303a   639.1248a   611.2303a   918.3102a
+  cgtot       1.1205f   582.5992a   582.5992a   489.3657a   566.8136a
+  cstot       1.6229f   856.7112a   856.7112a   639.1268a   918.3102a
+  cbtot       1.5809f     1.3331f     1.3610f     1.0223f     1.6268f
+  cgs       566.0881a   179.3571a   179.3571a   179.3538a   194.1560a
+  cgd       547.2853a   179.3500a   179.3500a   179.3500a   194.1501a
+
+
+
+ subckt    xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7
+ element  31:mn2l     31:mn1r     31:mn2r     32:mp1l     32:mp2l    
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region    Cutoff      Linear      Linear      Linear      Linear    
+  id          2.3073a    19.5937p    19.5937p   -46.7889p   -46.7889p
+  ibs         0.       -2.192e-24  -8.808e-27   1.280e-26   1.399e-23
+  ibd      -2.164e-24  -4.357e-24  -2.174e-24   1.397e-23   2.795e-23
+  vgs         9.2606n     1.8000      1.8000     -1.8000     -1.8000 
+  vds        20.0278n    20.2002n    20.2002n  -212.5533n  -212.5535n
+  vbs         0.        -20.2002n     0.          0.        212.5533n
+  vth       494.9894m   494.9894m   494.9894m  -522.9129m  -522.9130m
+  vdsat      56.0358m   537.0600m   537.0600m  -989.6420m  -989.6410m
+  vod      -494.9894m     1.3050      1.3050     -1.2771     -1.2771 
+  beta        1.0107m   771.2118u   771.2118u   228.7604u   228.7604u
+  gam eff   507.4459m   507.4459m   507.4459m   557.0847m   557.0847m
+  gm         70.4116a     8.6402p     8.6402p    24.8644p    24.8645p
+  gds       115.2031p   977.8671u   977.8672u   220.5317u   220.5316u
+  gmb         7.4230a     2.5437p     2.5437p    12.7702p    12.7702p
+  cdtot     918.3102a     1.6402f     1.6402f     1.6766f     1.6766f
+  cgtot     566.8136a     1.0796f     1.0796f     1.1205f     1.1205f
+  cstot     918.3102a     1.5665f     1.5665f     1.6229f     1.6229f
+  cbtot       1.6268f     1.6021f     1.6021f     1.5809f     1.5809f
+  cgs       194.1560a   505.7458a   505.7458a   566.0882a   566.0882a
+  cgd       194.1501a   511.1567a   511.1567a   547.2853a   547.2852a
+
+
+
+ subckt    xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7
+ element  32:mp1r     32:mp2r     32:mn1l     32:mn2l     32:mn1r    
+ model     0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1    0:n_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id        -28.3587a  -8.477e-19    20.0862p    21.8862p    21.0745p
+  ibs         0.        2.715e-23  -2.448e-24  -9.839e-27  -169.8783a
+  ibd       2.715e-23   2.796e-23  -194.5080a  -2.428e-24  -194.5080a
+  vgs      -107.6030n   305.1611n    17.8367n     1.8000    227.9260m
+  vds      -412.7677n   -12.3391n     1.8000     22.5637n   227.9257m
+  vbs         0.        412.7677n   -22.5637n     0.         -1.5721 
+  vth      -522.9129m  -522.9130m   428.5764m   494.9894m   646.0265m
+  vdsat     -56.5018m   -56.5018m    56.0137m   537.0600m    60.4693m
+  vod       522.9128m   522.9134m  -428.5764m     1.3050   -418.1005m
+  beta      273.2624u   273.2624u     1.0154m   771.2118u   999.4676u
+  gam eff   557.0847m   557.0847m   507.4459m   507.4459m   540.5080m
+  gm        728.1867a    21.7678a   655.9144p     9.6512p   703.9418p
+  gds        68.7034p    68.7029p    16.9764p   977.8671u    21.9892p
+  gmb       265.1993a     7.9276a    85.8379p     2.8413p    88.9080p
+  cdtot     856.7115a   856.7114a   670.4137a     1.6402f   670.4137a
+  cgtot     582.5994a   582.5994a   566.8137a     1.0796f   486.1694a
+  cstot     856.7113a   856.7111a   918.3104a     1.5665f   686.4056a
+  cbtot       1.5786f     1.5786f     1.3789f     1.6021f     1.0664f
+  cgs       179.3566a   179.3566a   194.1562a   505.7458a   194.1531a
+  cgd       179.3507a   179.3507a   194.1500a   511.1567a   194.1500a
+
+
+
+ subckt    xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7
+ element  32:mn2r     33:mn1      33:mp1      33:mn2      33:mp2     
+ model     0:n_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Cutoff    
+  id         16.5859p   -20.0853p    -5.3825p    32.6680p   2.250e-24
+  ibs      -8.163e-27  -194.5080a   1.965e-27  -1.330e-22   118.3823a
+  ibd      -169.8783a  -1.366e-22   118.3823a  -1.366e-22   118.3823a
+  vgs         1.2307u    -1.8000   -107.6031n     1.8000     -1.1903u
+  vds         1.5721     -1.8000     -1.8000     33.6792n    33.6792n
+  vbs         0.         -1.8000      0.         -1.2307u     1.8000 
+  vth       436.9859m   428.5766m  -511.4959m   494.9896m  -909.0143m
+  vdsat      56.0150m    56.0137m   -56.4732m   537.0597m   -62.1604m
+  vod      -436.9847m  -428.5778m   511.4958m     1.3050    909.0131m
+  beta        1.0151m     1.0154m   276.6692u   771.2121u   204.6762u
+  gam eff   507.4459m   507.4459m   557.0847m   507.4459m   547.4355m
+  gm        536.9464p   655.8839p   139.4273p    14.4056p   6.838e-23
+  gds        13.8620p    16.9756p     1.9516p   977.8664u    66.8067a
+  gmb        68.8398p    85.8339p    49.5987p     4.2411p   1.538e-23
+  cdtot     686.4052a   918.3100a   611.2303a     1.6402f   611.2303a
+  cgtot     566.8136a   566.8137a   582.5992a     1.0796f   489.3666a
+  cstot     918.3104a   670.4137a   856.7112a     1.5665f   611.2303a
+  cbtot       1.3949f     1.3789f     1.3331f     1.6021f   994.4230a
+  cgs       194.1562a   194.1500a   179.3571a   505.7458a   179.3500a
+  cgd       194.1500a   194.1562a   179.3500a   511.1567a   179.3542a
+
+
+
+ subckt    xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0
+ element  34:mp1      34:mn1      35:mp1      35:mn1      36:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Cutoff      Linear      Cutoff      Cutoff    
+  id        -23.6864p    20.0862p   -23.6864p    20.0862p    -5.3825p
+  ibs       6.481e-27  -9.838e-27   6.481e-27  -9.838e-27   1.965e-27
+  ibd       7.070e-24  -194.5080a   7.070e-24  -194.5080a   118.3824a
+  vgs        -1.8000      0.         -1.8000      0.       -425.1018n
+  vds      -107.6031n     1.8000   -107.6031n     1.8000     -1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth      -522.9129m   428.5764m  -522.9129m   428.5764m  -511.4959m
+  vdsat    -989.6420m    56.0137m  -989.6420m    56.0137m   -56.4732m
+  vod        -1.2771   -428.5764m    -1.2771   -428.5764m   511.4955m
+  beta      228.7604u     1.0154m   228.7604u     1.0154m   276.6692u
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm         12.5874p   655.9143p    12.5874p   655.9143p   139.4285p
+  gds       220.5318u    16.9764p   220.5318u    16.9764p     1.9517p
+  gmb         6.4648p    85.8379p     6.4648p    85.8379p    49.5991p
+  cdtot       1.6766f   670.4137a     1.6766f   670.4137a   611.2303a
+  cgtot       1.1205f   566.8137a     1.1205f   566.8137a   582.5992a
+  cstot       1.6229f   918.3104a     1.6229f   918.3104a   856.7112a
+  cbtot       1.5809f     1.3789f     1.5809f     1.3789f     1.3331f
+  cgs       566.0882a   194.1562a   566.0882a   194.1562a   179.3571a
+  cgd       547.2853a   194.1500a   547.2853a   194.1500a   179.3500a
+
+
+
+ subckt    xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0  xcla_8.xu0
+ element  36:mn1      37:mp1      37:mn1      38:mp1      38:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region    Linear      Cutoff      Linear      Cutoff      Linear    
+  id          8.9826p    -5.3825p     8.9826p    -5.3825p     8.9826p
+  ibs      -4.038e-27   1.965e-27  -4.038e-27   1.965e-27  -4.038e-27
+  ibd      -9.967e-25   118.3824a  -9.967e-25   118.3824a  -9.967e-25
+  vgs         1.8000      0.          1.8000   -425.1018n     1.8000 
+  vds         9.2607n    -1.8000      9.2606n    -1.8000      9.2607n
+  vbs         0.          0.          0.          0.          0.     
+  vth       494.9894m  -511.4959m   494.9894m  -511.4959m   494.9894m
+  vdsat     537.0599m   -56.4732m   537.0600m   -56.4732m   537.0599m
+  vod         1.3050    511.4959m     1.3050    511.4955m     1.3050 
+  beta      771.2119u   276.6692u   771.2118u   276.6692u   771.2119u
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm          3.9611p   139.4270p     3.9610p   139.4285p     3.9611p
+  gds       977.8670u     1.9516p   977.8672u     1.9517p   977.8670u
+  gmb         1.1662p    49.5986p     1.1661p    49.5991p     1.1662p
+  cdtot       1.6402f   611.2303a     1.6402f   611.2303a     1.6402f
+  cgtot       1.0796f   582.5992a     1.0796f   582.5992a     1.0796f
+  cstot       1.5665f   856.7112a     1.5665f   856.7112a     1.5665f
+  cbtot       1.6021f     1.3331f     1.6021f     1.3331f     1.6021f
+  cgs       505.7458a   179.3571a   505.7458a   179.3571a   505.7458a
+  cgd       511.1567a   179.3500a   511.1567a   179.3500a   511.1567a
+
+
+
+ subckt    xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1
+ element  39:mp1      39:mn1      40:mp1      40:mn1      41:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Cutoff      Cutoff      Linear      Linear    
+  id        -23.6864p    20.0862p    -5.3825p     8.9826p   -23.6864p
+  ibs       6.481e-27  -9.838e-27   1.965e-27  -4.038e-27   6.481e-27
+  ibd       7.070e-24  -194.5080a   118.3824a  -9.967e-25   7.070e-24
+  vgs        -1.8000      0.          0.          1.8000     -1.8000 
+  vds      -107.6031n     1.8000     -1.8000      9.2606n  -107.6030n
+  vbs         0.          0.          0.          0.          0.     
+  vth      -522.9129m   428.5764m  -511.4959m   494.9894m  -522.9129m
+  vdsat    -989.6420m    56.0137m   -56.4732m   537.0600m  -989.6420m
+  vod        -1.2771   -428.5764m   511.4959m     1.3050     -1.2771 
+  beta      228.7604u     1.0154m   276.6692u   771.2118u   228.7604u
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm         12.5874p   655.9143p   139.4270p     3.9610p    12.5874p
+  gds       220.5318u    16.9764p     1.9516p   977.8672u   220.5318u
+  gmb         6.4648p    85.8379p    49.5986p     1.1661p     6.4648p
+  cdtot       1.6766f   670.4137a   611.2303a     1.6402f     1.6766f
+  cgtot       1.1205f   566.8137a   582.5992a     1.0796f     1.1205f
+  cstot       1.6229f   918.3104a   856.7112a     1.5665f     1.6229f
+  cbtot       1.5809f     1.3789f     1.3331f     1.6021f     1.5809f
+  cgs       566.0882a   194.1562a   179.3571a   505.7458a   566.0882a
+  cgd       547.2853a   194.1500a   179.3500a   511.1567a   547.2853a
+
+
+
+ subckt    xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1  xcla_8.xu1
+ element  41:mn1      42:mp1      42:mn1      43:mp1      43:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region    Cutoff      Linear      Cutoff      Linear      Cutoff    
+  id         20.0862p   -23.6867p    20.0864p   -23.6864p    20.0862p
+  ibs      -9.839e-27   6.481e-27  -9.839e-27   6.481e-27  -9.839e-27
+  ibd      -194.5080a   7.070e-24  -194.5080a   7.070e-24  -194.5080a
+  vgs        40.4004n    -1.8000    282.4269n    -1.8000     40.4004n
+  vds         1.8000   -107.6041n     1.8000   -107.6031n     1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       428.5764m  -522.9129m   428.5764m  -522.9129m   428.5764m
+  vdsat      56.0137m  -989.6418m    56.0137m  -989.6420m    56.0137m
+  vod      -428.5763m    -1.2771   -428.5761m    -1.2771   -428.5763m
+  beta        1.0154m   228.7604u     1.0154m   228.7604u     1.0154m
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        655.9151p    12.5875p   655.9203p    12.5874p   655.9151p
+  gds        16.9764p   220.5317u    16.9766p   220.5318u    16.9764p
+  gmb        85.8380p     6.4648p    85.8387p     6.4648p    85.8380p
+  cdtot     670.4137a     1.6766f   670.4137a     1.6766f   670.4137a
+  cgtot     566.8137a     1.1205f   566.8137a     1.1205f   566.8137a
+  cstot     918.3104a     1.6229f   918.3104a     1.6229f   918.3104a
+  cbtot       1.3789f     1.5809f     1.3789f     1.5809f     1.3789f
+  cgs       194.1562a   566.0882a   194.1562a   566.0882a   194.1562a
+  cgd       194.1500a   547.2853a   194.1500a   547.2853a   194.1500a
+
+
+
+ subckt    xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2
+ element  44:mp1      44:mn1      45:mp1      45:mn1      46:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Cutoff      Cutoff      Linear      Linear    
+  id        -23.6864p    20.0862p    -5.3825p     8.9826p   -23.6865p
+  ibs       6.481e-27  -9.838e-27   1.965e-27  -4.038e-27   6.481e-27
+  ibd       7.070e-24  -194.5080a   118.3824a  -9.967e-25   7.070e-24
+  vgs        -1.8000      0.          0.          1.8000     -1.8000 
+  vds      -107.6031n     1.8000     -1.8000      9.2606n  -107.6031n
+  vbs         0.          0.          0.          0.          0.     
+  vth      -522.9129m   428.5764m  -511.4959m   494.9894m  -522.9129m
+  vdsat    -989.6420m    56.0137m   -56.4732m   537.0600m  -989.6420m
+  vod        -1.2771   -428.5764m   511.4959m     1.3050     -1.2771 
+  beta      228.7604u     1.0154m   276.6692u   771.2118u   228.7604u
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm         12.5874p   655.9143p   139.4270p     3.9610p    12.5874p
+  gds       220.5318u    16.9764p     1.9516p   977.8672u   220.5318u
+  gmb         6.4648p    85.8379p    49.5986p     1.1661p     6.4648p
+  cdtot       1.6766f   670.4137a   611.2303a     1.6402f     1.6766f
+  cgtot       1.1205f   566.8137a   582.5992a     1.0796f     1.1205f
+  cstot       1.6229f   918.3104a   856.7112a     1.5665f     1.6229f
+  cbtot       1.5809f     1.3789f     1.3331f     1.6021f     1.5809f
+  cgs       566.0882a   194.1562a   179.3571a   505.7458a   566.0882a
+  cgd       547.2853a   194.1500a   179.3500a   511.1567a   547.2853a
+
+
+
+ subckt    xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2  xcla_8.xu2
+ element  46:mn1      47:mp1      47:mn1      48:mp1      48:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region    Cutoff      Linear      Cutoff      Linear      Cutoff    
+  id         20.0862p   -23.6867p    20.0866p   -23.6864p    20.0862p
+  ibs      -9.839e-27   6.481e-27  -9.839e-27   6.480e-27  -9.839e-27
+  ibd      -194.5080a   7.070e-24  -194.5080a   7.070e-24  -194.5080a
+  vgs        40.4003n    -1.8000    529.3178n    -1.8000     40.4003n
+  vds         1.8000   -107.6045n     1.8000   -107.6030n     1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       428.5764m  -522.9129m   428.5764m  -522.9129m   428.5764m
+  vdsat      56.0137m  -989.6416m    56.0137m  -989.6420m    56.0137m
+  vod      -428.5763m    -1.2771   -428.5758m    -1.2771   -428.5763m
+  beta        1.0154m   228.7604u     1.0154m   228.7604u     1.0154m
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        655.9151p    12.5875p   655.9256p    12.5874p   655.9151p
+  gds        16.9764p   220.5317u    16.9767p   220.5318u    16.9764p
+  gmb        85.8380p     6.4649p    85.8394p     6.4648p    85.8380p
+  cdtot     670.4137a     1.6766f   670.4137a     1.6766f   670.4137a
+  cgtot     566.8137a     1.1205f   566.8137a     1.1205f   566.8137a
+  cstot     918.3104a     1.6229f   918.3104a     1.6229f   918.3104a
+  cbtot       1.3789f     1.5809f     1.3789f     1.5809f     1.3789f
+  cgs       194.1562a   566.0882a   194.1562a   566.0882a   194.1562a
+  cgd       194.1500a   547.2853a   194.1500a   547.2853a   194.1500a
+
+
+
+ subckt    xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3
+ element  49:mp1      49:mn1      50:mp1      50:mn1      51:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Cutoff      Cutoff      Linear      Linear    
+  id        -23.6864p    20.0862p    -5.3825p     8.9826p   -23.6864p
+  ibs       6.481e-27  -9.838e-27   1.965e-27  -4.038e-27   6.481e-27
+  ibd       7.070e-24  -194.5080a   118.3824a  -9.967e-25   7.070e-24
+  vgs        -1.8000      0.          0.          1.8000     -1.8000 
+  vds      -107.6031n     1.8000     -1.8000      9.2606n  -107.6030n
+  vbs         0.          0.          0.          0.          0.     
+  vth      -522.9129m   428.5764m  -511.4959m   494.9894m  -522.9129m
+  vdsat    -989.6420m    56.0137m   -56.4732m   537.0600m  -989.6420m
+  vod        -1.2771   -428.5764m   511.4959m     1.3050     -1.2771 
+  beta      228.7604u     1.0154m   276.6692u   771.2118u   228.7604u
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm         12.5874p   655.9143p   139.4270p     3.9610p    12.5874p
+  gds       220.5318u    16.9764p     1.9516p   977.8672u   220.5318u
+  gmb         6.4648p    85.8379p    49.5986p     1.1661p     6.4648p
+  cdtot       1.6766f   670.4137a   611.2303a     1.6402f     1.6766f
+  cgtot       1.1205f   566.8137a   582.5992a     1.0796f     1.1205f
+  cstot       1.6229f   918.3104a   856.7112a     1.5665f     1.6229f
+  cbtot       1.5809f     1.3789f     1.3331f     1.6021f     1.5809f
+  cgs       566.0882a   194.1562a   179.3571a   505.7458a   566.0882a
+  cgd       547.2853a   194.1500a   179.3500a   511.1567a   547.2853a
+
+
+
+ subckt    xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3  xcla_8.xu3
+ element  51:mn1      52:mp1      52:mn1      53:mp1      53:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region    Cutoff      Linear      Cutoff      Linear      Cutoff    
+  id         20.0862p   -23.6869p    20.0867p   -23.6864p    20.0862p
+  ibs      -9.839e-27   6.481e-27  -9.839e-27   6.481e-27  -9.839e-27
+  ibd      -194.5080a   7.071e-24  -194.5080a   7.070e-24  -194.5080a
+  vgs        40.4003n    -1.8000    740.6732n    -1.8000     40.4003n
+  vds         1.8000   -107.6053n     1.8000   -107.6031n     1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       428.5764m  -522.9129m   428.5764m  -522.9129m   428.5764m
+  vdsat      56.0137m  -989.6415m    56.0137m  -989.6420m    56.0137m
+  vod      -428.5763m    -1.2771   -428.5756m    -1.2771   -428.5763m
+  beta        1.0154m   228.7604u     1.0154m   228.7604u     1.0154m
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        655.9151p    12.5876p   655.9301p    12.5874p   655.9151p
+  gds        16.9764p   220.5317u    16.9768p   220.5318u    16.9764p
+  gmb        85.8380p     6.4649p    85.8400p     6.4648p    85.8380p
+  cdtot     670.4137a     1.6766f   670.4137a     1.6766f   670.4137a
+  cgtot     566.8137a     1.1205f   566.8137a     1.1205f   566.8137a
+  cstot     918.3104a     1.6229f   918.3104a     1.6229f   918.3104a
+  cbtot       1.3789f     1.5809f     1.3789f     1.5809f     1.3789f
+  cgs       194.1562a   566.0882a   194.1562a   566.0882a   194.1562a
+  cgd       194.1500a   547.2853a   194.1500a   547.2853a   194.1500a
+
+
+
+ subckt    xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4
+ element  54:mp1      54:mn1      55:mp1      55:mn1      56:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Cutoff      Cutoff      Linear      Linear    
+  id        -23.6864p    20.0862p    -5.3825p     8.9826p   -23.6864p
+  ibs       6.481e-27  -9.838e-27   1.965e-27  -4.038e-27   6.481e-27
+  ibd       7.070e-24  -194.5080a   118.3824a  -9.967e-25   7.070e-24
+  vgs        -1.8000      0.          0.          1.8000     -1.8000 
+  vds      -107.6031n     1.8000     -1.8000      9.2606n  -107.6030n
+  vbs         0.          0.          0.          0.          0.     
+  vth      -522.9129m   428.5764m  -511.4959m   494.9894m  -522.9129m
+  vdsat    -989.6420m    56.0137m   -56.4732m   537.0600m  -989.6420m
+  vod        -1.2771   -428.5764m   511.4959m     1.3050     -1.2771 
+  beta      228.7604u     1.0154m   276.6692u   771.2118u   228.7604u
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm         12.5874p   655.9143p   139.4270p     3.9610p    12.5874p
+  gds       220.5318u    16.9764p     1.9516p   977.8672u   220.5318u
+  gmb         6.4648p    85.8379p    49.5986p     1.1661p     6.4648p
+  cdtot       1.6766f   670.4137a   611.2303a     1.6402f     1.6766f
+  cgtot       1.1205f   566.8137a   582.5992a     1.0796f     1.1205f
+  cstot       1.6229f   918.3104a   856.7112a     1.5665f     1.6229f
+  cbtot       1.5809f     1.3789f     1.3331f     1.6021f     1.5809f
+  cgs       566.0882a   194.1562a   179.3571a   505.7458a   566.0882a
+  cgd       547.2853a   194.1500a   179.3500a   511.1567a   547.2853a
+
+
+
+ subckt    xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4  xcla_8.xu4
+ element  56:mn1      57:mp1      57:mn1      58:mp1      58:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region    Cutoff      Linear      Cutoff      Linear      Cutoff    
+  id         20.0862p   -23.6870p    20.0868p   -23.6864p    20.0862p
+  ibs      -9.839e-27   6.481e-27  -9.839e-27   6.481e-27  -9.839e-27
+  ibd      -194.5080a   7.071e-24  -194.5080a   7.070e-24  -194.5080a
+  vgs        40.4003n    -1.8000    916.4932n    -1.8000     40.4003n
+  vds         1.8000   -107.6058n     1.8000   -107.6031n     1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       428.5764m  -522.9129m   428.5764m  -522.9129m   428.5764m
+  vdsat      56.0137m  -989.6414m    56.0137m  -989.6420m    56.0137m
+  vod      -428.5763m    -1.2771   -428.5754m    -1.2771   -428.5763m
+  beta        1.0154m   228.7604u     1.0154m   228.7604u     1.0154m
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        655.9151p    12.5877p   655.9338p    12.5874p   655.9151p
+  gds        16.9764p   220.5317u    16.9769p   220.5318u    16.9764p
+  gmb        85.8380p     6.4649p    85.8405p     6.4648p    85.8380p
+  cdtot     670.4137a     1.6766f   670.4137a     1.6766f   670.4137a
+  cgtot     566.8137a     1.1205f   566.8136a     1.1205f   566.8137a
+  cstot     918.3104a     1.6229f   918.3104a     1.6229f   918.3104a
+  cbtot       1.3789f     1.5809f     1.3789f     1.5809f     1.3789f
+  cgs       194.1562a   566.0882a   194.1562a   566.0882a   194.1562a
+  cgd       194.1500a   547.2853a   194.1500a   547.2853a   194.1500a
+
+
+
+ subckt    xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5
+ element  59:mp1      59:mn1      60:mp1      60:mn1      61:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Cutoff      Cutoff      Linear      Linear    
+  id        -23.6864p    20.0862p    -5.3825p     8.9826p   -23.6864p
+  ibs       6.481e-27  -9.838e-27   1.965e-27  -4.038e-27   6.481e-27
+  ibd       7.070e-24  -194.5080a   118.3824a  -9.967e-25   7.070e-24
+  vgs        -1.8000      0.          0.          1.8000     -1.8000 
+  vds      -107.6031n     1.8000     -1.8000      9.2606n  -107.6030n
+  vbs         0.          0.          0.          0.          0.     
+  vth      -522.9129m   428.5764m  -511.4959m   494.9894m  -522.9129m
+  vdsat    -989.6420m    56.0137m   -56.4732m   537.0600m  -989.6420m
+  vod        -1.2771   -428.5764m   511.4959m     1.3050     -1.2771 
+  beta      228.7604u     1.0154m   276.6692u   771.2118u   228.7604u
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm         12.5874p   655.9143p   139.4270p     3.9610p    12.5874p
+  gds       220.5318u    16.9764p     1.9516p   977.8672u   220.5318u
+  gmb         6.4648p    85.8379p    49.5986p     1.1661p     6.4648p
+  cdtot       1.6766f   670.4137a   611.2303a     1.6402f     1.6766f
+  cgtot       1.1205f   566.8137a   582.5992a     1.0796f     1.1205f
+  cstot       1.6229f   918.3104a   856.7112a     1.5665f     1.6229f
+  cbtot       1.5809f     1.3789f     1.3331f     1.6021f     1.5809f
+  cgs       566.0882a   194.1562a   179.3571a   505.7458a   566.0882a
+  cgd       547.2853a   194.1500a   179.3500a   511.1567a   547.2853a
+
+
+
+ subckt    xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5  xcla_8.xu5
+ element  61:mn1      62:mp1      62:mn1      63:mp1      63:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region    Cutoff      Linear      Cutoff      Linear      Cutoff    
+  id         20.0862p   -23.6871p    20.0869p   -23.6864p    20.0862p
+  ibs      -9.839e-27   6.481e-27  -9.839e-27   6.481e-27  -9.839e-27
+  ibd      -194.5080a   7.071e-24  -194.5080a   7.070e-24  -194.5080a
+  vgs        40.4003n    -1.8000      1.0568u    -1.8000     40.4003n
+  vds         1.8000   -107.6063n     1.8000   -107.6031n     1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       428.5764m  -522.9129m   428.5764m  -522.9129m   428.5764m
+  vdsat      56.0137m  -989.6413m    56.0137m  -989.6420m    56.0137m
+  vod      -428.5763m    -1.2771   -428.5753m    -1.2771   -428.5763m
+  beta        1.0154m   228.7604u     1.0154m   228.7604u     1.0154m
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        655.9151p    12.5878p   655.9368p    12.5874p   655.9151p
+  gds        16.9764p   220.5316u    16.9770p   220.5318u    16.9764p
+  gmb        85.8380p     6.4650p    85.8408p     6.4648p    85.8380p
+  cdtot     670.4137a     1.6766f   670.4137a     1.6766f   670.4137a
+  cgtot     566.8137a     1.1205f   566.8136a     1.1205f   566.8137a
+  cstot     918.3104a     1.6229f   918.3104a     1.6229f   918.3104a
+  cbtot       1.3789f     1.5809f     1.3789f     1.5809f     1.3789f
+  cgs       194.1562a   566.0882a   194.1562a   566.0882a   194.1562a
+  cgd       194.1500a   547.2853a   194.1500a   547.2853a   194.1500a
+
+
+
+ subckt    xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6
+ element  64:mp1      64:mn1      65:mp1      65:mn1      66:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Cutoff      Cutoff      Linear      Linear    
+  id        -23.6864p    20.0862p    -5.3825p     8.9826p   -23.6864p
+  ibs       6.481e-27  -9.838e-27   1.965e-27  -4.038e-27   6.481e-27
+  ibd       7.070e-24  -194.5080a   118.3824a  -9.967e-25   7.070e-24
+  vgs        -1.8000      0.          0.          1.8000     -1.8000 
+  vds      -107.6031n     1.8000     -1.8000      9.2606n  -107.6030n
+  vbs         0.          0.          0.          0.          0.     
+  vth      -522.9129m   428.5764m  -511.4959m   494.9894m  -522.9129m
+  vdsat    -989.6420m    56.0137m   -56.4732m   537.0600m  -989.6420m
+  vod        -1.2771   -428.5764m   511.4959m     1.3050     -1.2771 
+  beta      228.7604u     1.0154m   276.6692u   771.2118u   228.7604u
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm         12.5874p   655.9143p   139.4270p     3.9610p    12.5874p
+  gds       220.5318u    16.9764p     1.9516p   977.8672u   220.5318u
+  gmb         6.4648p    85.8379p    49.5986p     1.1661p     6.4648p
+  cdtot       1.6766f   670.4137a   611.2303a     1.6402f     1.6766f
+  cgtot       1.1205f   566.8137a   582.5992a     1.0796f     1.1205f
+  cstot       1.6229f   918.3104a   856.7112a     1.5665f     1.6229f
+  cbtot       1.5809f     1.3789f     1.3331f     1.6021f     1.5809f
+  cgs       566.0882a   194.1562a   179.3571a   505.7458a   566.0882a
+  cgd       547.2853a   194.1500a   179.3500a   511.1567a   547.2853a
+
+
+
+ subckt    xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6  xcla_8.xu6
+ element  66:mn1      67:mp1      67:mn1      68:mp1      68:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region    Cutoff      Linear      Cutoff      Linear      Cutoff    
+  id         20.0862p   -23.6872p    20.0870p   -23.6864p    20.0862p
+  ibs      -9.839e-27   6.481e-27  -9.839e-27   6.481e-27  -9.839e-27
+  ibd      -194.5080a   7.071e-24  -194.5080a   7.070e-24  -194.5080a
+  vgs        40.4003n    -1.8000      1.1615u    -1.8000     40.4003n
+  vds         1.8000   -107.6064n     1.8000   -107.6031n     1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       428.5764m  -522.9129m   428.5764m  -522.9129m   428.5764m
+  vdsat      56.0137m  -989.6412m    56.0137m  -989.6420m    56.0137m
+  vod      -428.5763m    -1.2771   -428.5752m    -1.2771   -428.5763m
+  beta        1.0154m   228.7604u     1.0154m   228.7604u     1.0154m
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        655.9151p    12.5878p   655.9391p    12.5874p   655.9151p
+  gds        16.9764p   220.5316u    16.9771p   220.5318u    16.9764p
+  gmb        85.8380p     6.4650p    85.8411p     6.4648p    85.8380p
+  cdtot     670.4137a     1.6766f   670.4137a     1.6766f   670.4137a
+  cgtot     566.8137a     1.1205f   566.8136a     1.1205f   566.8137a
+  cstot     918.3104a     1.6229f   918.3104a     1.6229f   918.3104a
+  cbtot       1.3789f     1.5809f     1.3789f     1.5809f     1.3789f
+  cgs       194.1562a   566.0882a   194.1562a   566.0882a   194.1562a
+  cgd       194.1500a   547.2853a   194.1500a   547.2853a   194.1500a
+
+
+
+ subckt    xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7
+ element  69:mp1      69:mn1      70:mp1      70:mn1      71:mp1     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Cutoff      Cutoff      Linear      Linear    
+  id        -23.6864p    20.0862p    -5.3825p     8.9826p   -23.6864p
+  ibs       6.481e-27  -9.838e-27   1.965e-27  -4.038e-27   6.481e-27
+  ibd       7.070e-24  -194.5080a   118.3824a  -9.967e-25   7.070e-24
+  vgs        -1.8000      0.          0.          1.8000     -1.8000 
+  vds      -107.6031n     1.8000     -1.8000      9.2606n  -107.6030n
+  vbs         0.          0.          0.          0.          0.     
+  vth      -522.9129m   428.5764m  -511.4959m   494.9894m  -522.9129m
+  vdsat    -989.6420m    56.0137m   -56.4732m   537.0600m  -989.6420m
+  vod        -1.2771   -428.5764m   511.4959m     1.3050     -1.2771 
+  beta      228.7604u     1.0154m   276.6692u   771.2118u   228.7604u
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm         12.5874p   655.9143p   139.4270p     3.9610p    12.5874p
+  gds       220.5318u    16.9764p     1.9516p   977.8672u   220.5318u
+  gmb         6.4648p    85.8379p    49.5986p     1.1661p     6.4648p
+  cdtot       1.6766f   670.4137a   611.2303a     1.6402f     1.6766f
+  cgtot       1.1205f   566.8137a   582.5992a     1.0796f     1.1205f
+  cstot       1.6229f   918.3104a   856.7112a     1.5665f     1.6229f
+  cbtot       1.5809f     1.3789f     1.3331f     1.6021f     1.5809f
+  cgs       566.0882a   194.1562a   179.3571a   505.7458a   566.0882a
+  cgd       547.2853a   194.1500a   179.3500a   511.1567a   547.2853a
+
+
+
+ subckt    xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7  xcla_8.xu7
+ element  71:mn1      72:mp1      72:mn1      73:mp1      73:mn1     
+ model     0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1  
+ region    Cutoff      Linear      Cutoff      Linear      Cutoff    
+  id         20.0862p   -23.6872p    20.0870p   -23.6864p    20.0862p
+  ibs      -9.839e-27   6.481e-27  -9.839e-27   6.481e-27  -9.839e-27
+  ibd      -194.5080a   7.071e-24  -194.5080a   7.070e-24  -194.5080a
+  vgs        40.4003n    -1.8000      1.2307u    -1.8000     40.4003n
+  vds         1.8000   -107.6066n     1.8000   -107.6031n     1.8000 
+  vbs         0.          0.          0.          0.          0.     
+  vth       428.5764m  -522.9129m   428.5764m  -522.9129m   428.5764m
+  vdsat      56.0137m  -989.6412m    56.0137m  -989.6420m    56.0137m
+  vod      -428.5763m    -1.2771   -428.5751m    -1.2771   -428.5763m
+  beta        1.0154m   228.7604u     1.0154m   228.7604u     1.0154m
+  gam eff   507.4459m   557.0847m   507.4459m   557.0847m   507.4459m
+  gm        655.9151p    12.5878p   655.9405p    12.5874p   655.9151p
+  gds        16.9764p   220.5316u    16.9771p   220.5318u    16.9764p
+  gmb        85.8380p     6.4650p    85.8413p     6.4648p    85.8380p
+  cdtot     670.4137a     1.6766f   670.4137a     1.6766f   670.4137a
+  cgtot     566.8137a     1.1205f   566.8136a     1.1205f   566.8137a
+  cstot     918.3104a     1.6229f   918.3104a     1.6229f   918.3104a
+  cbtot       1.3789f     1.5809f     1.3789f     1.5809f     1.3789f
+  cgs       194.1562a   566.0882a   194.1562a   566.0882a   194.1562a
+  cgd       194.1500a   547.2853a   194.1500a   547.2853a   194.1500a
+
+
+
+ ******
+ .title carry_lookahead addder implement by cmos logic
+
+ ****** transient analysis tnom=  25.000 temp=  25.000 ******
+ t1=   5.1500n
+ t2=   6.2532n
+ td=   1.1032n
+ power_analysis_mux=  49.7902u  from=   5.1500n     to=   6.2532n
+ power_analysis_xnor_up=  25.3683u  from=   5.1500n     to=   6.2532n
+ power_analysis_xnor_low=  20.0782u  from=   5.1500n     to=   6.2532n
+ all_power= 328.1422u  from=   5.1500n     to=   6.2532n
+ u0_power=  95.2367u  from=   5.1500n     to=   6.2532n
+ u1_power=  35.1738u  from=   5.1500n     to=   6.2532n
+ u2_power=  33.1569u  from=   5.1500n     to=   6.2532n
+ u3_power=  35.2683u  from=   5.1500n     to=   6.2532n
+ u4_power=  38.4977u  from=   5.1500n     to=   6.2532n
+ u5_power=  36.8608u  from=   5.1500n     to=   6.2532n
+ u6_power=  29.8777u  from=   5.1500n     to=   6.2532n
+ u7_power=  24.0702u  from=   5.1500n     to=   6.2532n
+
+          ***** job concluded
+ ******  
+ .title carry_lookahead addder implement by cmos logic
+
+ ****** job statistics summary tnom=  25.000 temp=  25.000 ******
+  
+ ******  Machine Information  ******
+ CPU:
+ model name	: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+ cpu MHz	: 1596.000
+  
+ OS:
+ Linux version 2.6.32-696.30.1.el6.x86_64 (mockbuild@c1bl.rdu2.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-18) (GCC) ) #1 SMP Tue May 22 03:28:18 UTC 2018
+
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    16
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =     628 # elements   =     259
+  # resistors   =       0 # capacitors =       0 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =      19
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =     240 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.02           1          21
+  transient          0.17         201         338         111 rev=         1
+  readin             0.02
+  errchk             0.01
+  setup              0.01
+  output             0.00
+
+
+           peak memory used        362.50 megabytes
+           total cpu time            0.24 seconds
+           total elapsed time        1.52 seconds
+           job started at     21:45:54 03/16/2023
+           job ended   at     21:45:55 03/16/2023
+           job total runtime         1.52 seconds
+
+
+ lic: Release hspice token(s) 
+ lic: total license checkout elapse time:        1.28(s)

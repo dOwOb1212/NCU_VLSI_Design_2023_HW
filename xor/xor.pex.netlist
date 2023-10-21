@@ -1,0 +1,43 @@
+* File: xor.pex.netlist
+* Created: Tue Dec 27 22:02:59 2022
+* Program "Calibre xRC"
+* Version "v2022.3_33.19"
+* 
+.include "xor.pex.netlist.pex"
+.subckt XOR  A OUT B VSS VD
+* 
+* VD	VD
+* VSS	VSS
+* B	B
+* OUT	OUT
+* A	A
+M0 N_2_M0_d N_A_M0_g N_VSS_M0_s N_VSS_M0_b N_18 L=1.8e-07 W=5.3e-07 AD=2.809e-13
++ AS=2.809e-13 PD=1.59e-06 PS=1.59e-06
+M1 N_3_M1_d N_B_M1_g N_VSS_M1_s N_VSS_M0_b N_18 L=1.8e-07 W=5.3e-07
++ AD=1.4045e-13 AS=2.809e-13 PD=5.3e-07 PS=1.59e-06
+M2 N_OUT_M2_d N_A_M2_g N_3_M2_s N_VSS_M0_b N_18 L=1.8e-07 W=5.3e-07 AD=2.809e-13
++ AS=1.4045e-13 PD=1.59e-06 PS=5.3e-07
+M3 N_6_M3_d N_2_M3_g N_OUT_M3_s N_VSS_M0_b N_18 L=1.8e-07 W=5.3e-07 AD=1.431e-13
++ AS=2.756e-13 PD=5.4e-07 PS=1.57e-06
+M4 N_VSS_M4_d N_8_M4_g N_6_M4_s N_VSS_M0_b N_18 L=1.8e-07 W=5.3e-07 AD=2.809e-13
++ AS=1.431e-13 PD=1.59e-06 PS=5.4e-07
+M5 N_VSS_M5_d N_B_M5_g N_8_M5_s N_VSS_M0_b N_18 L=1.8e-07 W=5.3e-07 AD=2.756e-13
++ AS=2.862e-13 PD=1.57e-06 PS=1.61e-06
+M6 N_2_M6_d N_A_M6_g N_VD_M6_s N_VD_M6_b P_18 L=1.8e-07 W=5.3e-07 AD=2.809e-13
++ AS=2.809e-13 PD=1.59e-06 PS=1.59e-06
+M7 N_4_M7_d N_2_M7_g N_VD_M7_s N_VD_M6_b P_18 L=1.8e-07 W=5.3e-07 AD=1.4575e-13
++ AS=2.756e-13 PD=5.5e-07 PS=1.57e-06
+M8 N_OUT_M8_d N_B_M8_g N_4_M8_s N_VD_M6_b P_18 L=1.8e-07 W=5.3e-07 AD=2.756e-13
++ AS=1.4575e-13 PD=1.57e-06 PS=5.5e-07
+M9 N_7_M9_d N_A_M9_g N_OUT_M9_s N_VD_M6_b P_18 L=1.8e-07 W=5.3e-07 AD=1.4045e-13
++ AS=2.809e-13 PD=5.3e-07 PS=1.59e-06
+M10 N_VD_M10_d N_8_M10_g N_7_M10_s N_VD_M6_b P_18 L=1.8e-07 W=5.3e-07
++ AD=2.809e-13 AS=1.4045e-13 PD=1.59e-06 PS=5.3e-07
+M11 N_VD_M11_d N_B_M11_g N_8_M11_s N_VD_M6_b P_18 L=1.8e-07 W=5.3e-07
++ AD=2.756e-13 AS=2.862e-13 PD=1.57e-06 PS=1.61e-06
+*
+.include "xor.pex.netlist.XOR.pxi"
+*
+.ends
+*
+*

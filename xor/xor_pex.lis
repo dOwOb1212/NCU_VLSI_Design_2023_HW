@@ -1,0 +1,882 @@
+ ****** HSPICE -- Q-2020.03 linux64 (Mar  8 2020) ******                        
+  Copyright (c) 1986 - 2022 by Synopsys, Inc. All Rights Reserved.              
+  This software and the associated documentation are proprietary
+  to Synopsys, Inc. This software may only be used in accordance
+  with the terms and conditions of a written license agreement with
+  Synopsys, Inc. All other use, reproduction, or distribution of
+  this software is strictly prohibited.
+  Input File: xortest.sp                                                        
+  Command line options: /usr/cad/synopsys/hspice/cur/hspice/linux64/hspice -i xortest.sp -o xor_pex.lis
+  Start time: Tue Dec 27 22:04:50 2022
+ lic:  
+ lic: FLEXlm: SDK_12.6 
+ lic: USER:   109303021            HOSTNAME: ares-athena 
+ lic: HOSTID: "e61f13c2e205"       PID:      20879 
+ lic: Using FLEXlm license file: 
+ lic: 26585@lshc 
+ lic: Checkout 1 hspice 
+ lic: License/Maintenance for hspice will expire on 14-may-2025/2022.06 
+ lic: 168(in_use)/600(total) FLOATING license(s) on SERVER 26585@lshc 
+ lic:   
+  **warning** (xorpre.sp:1) Global net name "a" in subckt pin list. The pin will be connected to the local net. Recommend to not use global net names in subckt pin lists.
+1****** HSPICE -- Q-2020.03 linux64 (Mar  8 2020) ******                        
+ ******  
+ .protect
+
+ ****** circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 xxor.                           xor1               1.00 
+        2 xxor1.                          xor                1.00 
+        3 xxor1.x_pm_xor%a.               pm_xor%a           1.00 
+        4 xxor1.x_pm_xor%2.               pm_xor%2           1.00 
+        5 xxor1.x_pm_xor%3.               pm_xor%3           1.00 
+        6 xxor1.x_pm_xor%4.               pm_xor%4           1.00 
+        7 xxor1.x_pm_xor%out.             pm_xor%out         1.00 
+        8 xxor1.x_pm_xor%6.               pm_xor%6           1.00 
+        9 xxor1.x_pm_xor%7.               pm_xor%7           1.00 
+       10 xxor1.x_pm_xor%8.               pm_xor%8           1.00 
+       11 xxor1.x_pm_xor%b.               pm_xor%b           1.00 
+       12 xxor1.x_pm_xor%vss.             pm_xor%vss         1.00 
+       13 xxor1.x_pm_xor%vd.              pm_xor%vd          1.00 
+  **info** (xortest.sp:17) DC voltage reset to initial transient source value in source 0:va. new dc=0.0000D+00
+ ***************************************************************************
+ ***        model parameters  model name:   0:p_18.1   model type:pmos   ***
+ ***************************************************************************
+
+   *** general parameters ***
+    deriv=   0.           
+
+   ***  level 49  model parameters  ***
+
+      hspver=    2006.03               level=         49         
+     version=        3.2            paramchk=          0         
+      apwarn=          1                lite=          0         
+      vgslim=          0             binUnit=          1         
+      capMod=          2               xpart=          1         
+      mobMod=          3              nqsMod=          0         
+      stiMod=          0                 elm=          5         
+    sfvtflag=          0                 tox=    4.2e-09 meter   
+          xj=      1e-07 meter       binflag=          0         
+        lmin=    1.8e-07 meter          lmax=      5e-05 meter   
+        wmin=    2.5e-07 meter          wmax=     0.0001 meter   
+        lref=          0 meter          wref=          0 meter   
+        lint= -1.041e-08 meter          wint= -1.525e-07 meter   
+       lmult=          1               wmult=          1         
+          ll=  6.635e-15                 lln=          1         
+          lw= -2.873e-16                 lwn=          1         
+         lwl=          0                  wl=          0         
+         wln=          1                  ww=  1.236e-14         
+         wwn=          1                 wwl=          0         
+         dwg= -1.251e-07 m/V             dwb= -1.039e-07 m/V^1/2 
+          xl=     -2e-09                  xw=          0         
+          a0=       1.35                 ags=     0.3818 V^-1    
+          b0= -3.088e-07 meter            b1=          0 meter   
+        keta=    0.01044 V^-1           voff=    -0.1073 V       
+       ngate=      1e+23 cm^-3           vbx=          0 V       
+         vbm=         -3 V                xt=   1.55e-07 meter   
+        vth0=    -0.4555 V               nch=  6.231e+17 cm^-3   
+        nsub=      6e+16 cm^-3           nlx=   2.53e-07 meter   
+      gamma1=          0 V^-1/2       gamma2=          0 V^-1/2  
+          k1=     0.5704 V^1/2            k2=   0.006973         
+          k3=     -2.833                 k3b=      1.326 V^-1    
+          w0= -1.943e-07 meter          dvt0=     0.4885         
+        dvt1=    0.07578                dvt2=     0.1187 V^-1    
+       dvt0w=    -0.1261 meter^-1      dvt1w=      24790 meter^-1
+       dvt2w=     0.6915 V^-1           dsub=     1.9191         
+        eta0=      1.071                etab=    -0.9291 V^-1    
+          u0=      124.5 cm^2/V/sec         ua=   1.54e-09 m/V     
+          ub=  2.646e-19 (m/V)^2          uc=   -0.09587 V^-1    
+        vsat=      53400 m/sec            a1=          0 v^-1    
+          a2=          1               delta=       0.01 V       
+        rdsw=      792.1 ohm-um         prwg=          0 V^-1    
+        prwb=          0 V^-1/2           wr=          1         
+        pclm=      2.653             pdiblc1=          0         
+     pdiblc2=      5e-06             pdiblcb=          0 V^-1    
+      pscbe1=  4.866e+08 V/m          pscbe2=    2.8e-07 V/m     
+       drout=      1.457                pvag=      1.262         
+     nfactor=      1.535                cdsc=  0.0007578 f/m^2   
+       cdscb=     0.0001 f/V/m^2       cdscd= -2.883e-05 f/V/m^2 
+         cit=  -0.001067 f/m^2        alpha0=          0 m/V     
+       beta0=         30 V               dlc=   7.01e-08 meter   
+         dwc=          0 meter           clc=      1e-07 meter   
+         cle=        0.6                cgso=  2.054e-10 f/m     
+        cgdo=  2.054e-10 f/m            cgbo=          0 f/m     
+        cgsl=          0 f/m            cgdl=          0 f/m     
+      ckappa=        0.6                  cf=  1.533e-10 f/m     
+        acde=          1 m/V            moin=         15 V^1/2   
+        toxm=    4.2e-09 m            dtoxcv=          0 m       
+         vfb (not used)                alpha1=          0 1/V     
+        ijth=          0 A              noff=          1         
+      voffcv=          0                 tcj=          0 1/K     
+       tcjsw=          0 1/K          tcjswg=          0 1/K     
+         tpb=          0 V/K           tpbsw=          0 V/K     
+      tpbswg=          0 V/K             llc=  -1.31e-14         
+         lwc=          0                lwlc=          0         
+         wlc=          0                 wwc=          0         
+        wwlc=          0                tnom=     298.15 K       
+         kt1=    -0.2294 V              kt1l= -8.204e-09         
+         kt2=  -0.009487                 ute=    -0.4484         
+         ua1=  4.571e-09 m/V             ub1= -6.026e-18 (m/V)^2 
+         uc1=    -0.0985 m/V^2            at=      12030 m/s     
+         prt=          0         
+         using Berkeley noise model       noiMod=          1         
+        noia=      1e+20                noib=      50000         
+        noic=   -1.4e-12                  em=    4.2e+07         
+          ef=          1                  af=          1         
+          kf=          0              gdsnoi=-1.23457e-29         
+         using Hspice diodes            using ACM 
+         acm=         3                 hdif=   2.6e-07 meter    
+        ldif=     8e-08 meter             js=     3e-06 amp/m^2  
+         jsw=  4.22e-11 amp/m            xti=         3          
+           n=         1                   cj=   0.00124 f/m^2    
+          mj=     0.395                   pb=     0.762 V        
+        cjsw=  1.74e-10 f/m             mjsw=     0.324          
+         php=     0.665 V               pbsw (not used)           
+      cjgate=  1.74e-10 f/m            cjswg (not used)           
+       mjswg (not used)                 pbswg (not used)           
+         la0=     -0.281                lags=    0.04454         
+       lketa=     -0.012               lvoff= -0.0009871         
+       lvth0=     0.0044                lnlx= -1.584e-08         
+         lua= -8.253e-11            lpdiblc2=   0.003012         
+         wa0=   -0.04807                wags=   -0.04277         
+       wvoff=  -0.009816               wvth0=    -0.0148         
+         wua=   2.63e-09               wvsat=     -14200         
+       wrdsw=      10.07                wute=    -0.2682         
+         wat=      -6405                wprt=      226.6         
+         pa0=    0.08661                pags=   -0.04076         
+       pvoff= -9.833e-05               pvth0=     0.0032         
+         pua=  5.855e-11               pvsat=       -434         
+ ***************************************************************************
+ ***        model parameters  model name:   0:n_18.1   model type:nmos   ***
+ ***************************************************************************
+
+   *** general parameters ***
+    deriv=   0.           
+
+   ***  level 49  model parameters  ***
+
+      hspver=    2006.03               level=         49         
+     version=        3.2            paramchk=          0         
+      apwarn=          1                lite=          0         
+      vgslim=          0             binUnit=          1         
+      capMod=          2               xpart=          1         
+      mobMod=          1              nqsMod=          0         
+      stiMod=          0                 elm=          5         
+    sfvtflag=          0                 tox=    4.2e-09 meter   
+          xj=    1.6e-07 meter       binflag=          0         
+        lmin=    1.8e-07 meter          lmax=      5e-05 meter   
+        wmin=    2.5e-07 meter          wmax=     0.0001 meter   
+        lref=          0 meter          wref=          0 meter   
+        lint=  1.587e-08 meter          wint=  1.022e-08 meter   
+       lmult=          1               wmult=          1         
+          ll= -1.062e-15                 lln=          1         
+          lw=  2.996e-15                 lwn=          1         
+         lwl=          0                  wl=          0         
+         wln=          1                  ww=  7.262e-16         
+         wwn=          1                 wwl=          0         
+         dwg= -3.396e-09 m/V             dwb=  1.346e-09 m/V^1/2 
+          xl=  -1.05e-08                  xw=          0         
+          a0=       1.93                 ags=     0.5072 V^-1    
+          b0=  1.486e-06 meter            b1=  9.064e-06 meter   
+        keta=    0.01752 V^-1           voff=    -0.1088 V       
+       ngate=      1e+23 cm^-3           vbx=          0 V       
+         vbm=         -3 V                xt=   1.55e-07 meter   
+        vth0=     0.3075 V               nch= 3.7446e+17 cm^-3   
+        nsub=      6e+16 cm^-3           nlx=  4.279e-07 meter   
+      gamma1=          0 V^-1/2       gamma2=          0 V^-1/2  
+          k1=     0.4578 V^1/2            k2=   -0.02638         
+          k3=     -10.88                 k3b=     0.2379 V^-1    
+          w0= -8.813e-08 meter          dvt0=     0.4042         
+        dvt1=     0.3237                dvt2=    -0.8602 V^-1    
+       dvt0w=      0.383 meter^-1      dvt1w=     600000 meter^-1
+       dvt2w=     -0.025 V^-1           dsub=   0.001592         
+        eta0=   0.001004                etab=  -0.001459 V^-1    
+          u0=      324.1 cm^2/V/sec         ua= -9.201e-10 m/V     
+          ub=  1.907e-18 (m/V)^2          uc=  4.355e-11 V^-1    
+        vsat=      72580 m/sec            a1=          0 v^-1    
+          a2=          1               delta=       0.01 V       
+        rdsw=      4.905 ohm-um         prwg=          0 V^-1    
+        prwb=          0 V^-1/2           wr=          1         
+        pclm=      1.091             pdiblc1=   0.003061         
+     pdiblc2=      1e-06             pdiblcb=          0 V^-1    
+      pscbe1=  4.866e+08 V/m          pscbe2=    2.8e-07 V/m     
+       drout=   0.001592                pvag=    -0.2958         
+     nfactor=      1.038                cdsc=   0.002275 f/m^2   
+       cdscb=  0.0008241 f/V/m^2       cdscd=    -0.0005 f/V/m^2 
+         cit=  -0.001511 f/m^2        alpha0=          0 m/V     
+       beta0=         30 V               dlc=      4e-08 meter   
+         dwc=          0 meter           clc=      1e-07 meter   
+         cle=        0.6                cgso=   2.35e-10 f/m     
+        cgdo=   2.35e-10 f/m            cgbo=          0 f/m     
+        cgsl=          0 f/m            cgdl=          0 f/m     
+      ckappa=        0.6                  cf=  1.533e-10 f/m     
+        acde=          1 m/V            moin=         15 V^1/2   
+        toxm=    4.2e-09 m            dtoxcv=          0 m       
+         vfb (not used)                alpha1=          0 1/V     
+        ijth=          0 A              noff=          1         
+      voffcv=          0                 tcj=          0 1/K     
+       tcjsw=          0 1/K          tcjswg=          0 1/K     
+         tpb=          0 V/K           tpbsw=          0 V/K     
+      tpbswg=          0 V/K             llc=  -6.64e-15         
+         lwc=          0                lwlc=          0         
+         wlc=          0                 wwc=          0         
+        wwlc=          0                tnom=     298.15 K       
+         kt1=    -0.2255 V              kt1l= -4.275e-09         
+         kt2=   -0.02527                 ute=     -1.186         
+         ua1=  2.253e-09 m/V             ub1= -2.673e-18 (m/V)^2 
+         uc1= -3.832e-11 m/V^2            at=      14490 m/s     
+         prt=     -10.18         
+         using Berkeley noise model       noiMod=          1         
+        noia=      1e+20                noib=      50000         
+        noic=   -1.4e-12                  em=    4.2e+07         
+          ef=          1                  af=          1         
+          kf=          0              gdsnoi=-1.23457e-29         
+         using Hspice diodes            using ACM 
+         acm=         3                 hdif=   2.6e-07 meter    
+        ldif=     8e-08 meter             js=     1e-06 amp/m^2  
+         jsw=     7e-11 amp/m            xti=         3          
+           n=         1                   cj=   0.00103 f/m^2    
+          mj=     0.443                   pb=     0.823 V        
+        cjsw=  1.34e-10 f/m             mjsw=      0.33          
+         php=      0.88 V               pbsw (not used)           
+      cjgate=     5e-10 f/m            cjswg (not used)           
+       mjswg (not used)                 pbswg (not used)           
+         la0=    -0.4667                lags=     0.3028         
+       lketa=   -0.01942               lvoff=  -0.004208         
+       lvth0=     -0.001                lnlx= -2.854e-08         
+       leta0=   0.001574            lpdiblc2=  -0.004752         
+         wa0=   -0.04731                wags=   0.004242         
+       wvoff= -0.0004078               wvth0=    0.06027         
+         wu0=       0.54                 wua=  -1.88e-11         
+       wvsat=       5066                wute=    0.06373         
+         wat=       7067                 pa0=   -0.02649         
+       pvoff= -0.0003788                 pw0=    1.3e-09         
+         pub=    3.8e-20         
+ 
+
+ Warning: Pd = 5.5e-07 is less than Weff = 7.88358e-07 in BSIM3 model 0:p_18.1 element m7 with W = 5.3e-07, L = 1.78e-07
+
+             
+ Summary of Linear Res Distribution Info
+ ---------------------------------------
+ |Range          |Total     |Percent(%)|
+ |---------------+----------+----------|
+ |1e-03  ~  1e-02|4         |2.0202    |
+ |1e-02  ~  1e-01|34        |17.1717   |
+ |1e-01  ~  1e+00|36        |18.1818   |
+ |1e+00  ~  1e+03|124       |62.6263   |
+ ---------------------------------------
+              
+             
+ Summary of Linear Cap Distribution Info
+ ---------------------------------------
+ |Range          |Total     |Percent(%)|
+ |---------------+----------+----------|
+ |1e-19  ~  1e-18|1         |1.3699    |
+ |1e-18  ~  1e-17|4         |5.4795    |
+ |1e-17  ~  1e-16|28        |38.3562   |
+ |1e-16  ~  1e-15|40        |54.7945   |
+ ---------------------------------------
+              
+             
+ Summary of Detailed RC Type Statistics
+ -------------------------
+ |Element Type|Number    |
+ |------------+----------|
+ |Constant Res|198       |
+ |            |          |
+ |Constant Cap|73        |
+ -------------------------
+              
+  
+      
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 3         bypass  = 2.0000    
+  Opening plot unit= 15
+ file=xor_pex.pa0
+
+ **info** dc convergence successful at Newton-Raphson method 
+ ******  
+ .protect
+
+ ****** operating point information tnom=  25.000 temp=  25.000 ******
+ ****** operating point status is all       simulation time is     0.     
+     node    =voltage       node    =voltage       node    =voltage
+
+ + 0:a       =   0.       0:b       =   0.       0:vdd     =   1.8000 
+ + 0:vss     =   0.       0:xorhspic=  41.3457n  0:xorlayou=  42.4887n
+ + 1:a_inv   =   1.8000   1:b_inv   =   1.8000   1:node0   = 404.8865m
+ + 1:node1   = 404.8865m  1:node2   =  20.6728n  1:node3   =  20.4853n
+ + 2:n_2_m0_d=   1.8000   2:n_2_m3_g=   1.8000   2:n_2_m6_d=   1.8000 
+ + 2:n_2_m7_g=   1.8000   2:n_3_m1_d=  21.0524n  2:n_3_m2_s=  21.0524n
+ + 2:n_4_m7_d= 404.8862m  2:n_4_m8_s= 404.8862m  2:n_6_m3_d=  21.3588n
+ + 2:n_6_m4_s=  21.1636n  2:n_7_m10_= 404.8861m  2:n_7_m9_d= 404.8861m
+ + 2:n_8_m10_=   1.8000   2:n_8_m11_=   1.8000   2:n_8_m4_g=   1.8000 
+ + 2:n_8_m5_s=   1.8000   2:n_a_m0_g=   0.       2:n_a_m2_g=   0.     
+ + 2:n_a_m6_g=   0.       2:n_a_m9_g=   0.       2:n_b_m11_=   0.     
+ + 2:n_b_m1_g=   0.       2:n_b_m5_g=   0.       2:n_b_m8_g=   0.     
+ + 2:n_out_m2=  42.4892n  2:n_out_m3=  42.0314n  2:n_out_m8=  42.7111n
+ + 2:n_out_m9=  42.7090n  2:n_vd_m10=   1.8000   2:n_vd_m11=   1.8000 
+ + 2:n_vd_m6_=   1.8000   2:n_vd_m6_=   1.8000   2:n_vd_m7_=   1.8000 
+ + 2:n_vss_m0=  54.2298p  2:n_vss_m0= 437.3181p  2:n_vss_m1=  48.9537a
+ + 2:n_vss_m4= 490.9360p  2:n_vss_m5= 472.4463p  3:3       =   0.     
+ + 3:6       =   0.       3:12      =   0.       3:14      =   0.     
+ + 3:17      =   0.       3:20      =   0.       3:25      =   0.     
+ + 3:27      =   0.       3:29      =   0.       3:33      =   0.     
+ + 3:41      =   0.       3:42      =   0.       3:43      =   0.     
+ + 3:47      =   0.       3:48      =   0.       3:49      =   0.     
+ + 3:51      =   0.       4:2       =   1.8000   4:4       =   1.8000 
+ + 4:6       =   1.8000   4:8       =   1.8000   4:10      =   1.8000 
+ + 4:12      =   1.8000   4:14      =   1.8000   4:17      =   1.8000 
+ + 4:21      =   1.8000   4:23      =   1.8000   4:24      =   1.8000 
+ + 4:25      =   1.8000   4:26      =   1.8000   4:27      =   1.8000 
+ + 4:29      =   1.8000   4:33      =   1.8000   4:37      =   1.8000 
+ + 4:40      =   1.8000   4:41      =   1.8000   5:9       =  21.0524n
+ + 6:9       = 404.8862m  7:2       =  42.4892n  7:4       =  42.4892n
+ + 7:6       =  42.4896n  7:8       =  42.4910n  7:10      =  42.4856n
+ + 7:11      =  42.4891n  7:14      =  42.4847n  7:16      =  42.4709n
+ + 7:18      =  42.4860n  7:20      =  42.4874n  7:22      =  42.4892n
+ + 7:23      =  42.4856n  7:26      =  42.6648n  7:30      =  42.6613n
+ + 7:34      =  42.4892n  7:38      =  42.1232n  8:9       =  21.2590n
+ + 9:9       = 404.8861m 10:2       =   1.8000  10:4       =   1.8000 
+ +10:6       =   1.8000  10:8       =   1.8000  10:10      =   1.8000 
+ +10:12      =   1.8000  10:14      =   1.8000  10:17      =   1.8000 
+ +10:21      =   1.8000  10:32      =   1.8000  10:33      =   1.8000 
+ +10:34      =   1.8000  11:3       =   0.      11:8       =   0.     
+ +11:9       =   0.      11:10      =   0.      11:11      =   0.     
+ +11:12      =   0.      11:15      =   0.      11:16      =   0.     
+ +11:19      =   0.      11:20      =   0.      11:21      =   0.     
+ +11:25      =   0.      11:26      =   0.      11:29      =   0.     
+ +11:31      =   0.      11:33      =   0.      11:35      =   0.     
+ +11:37      =   0.      12:2       =   5.9804p 12:4       =  13.8585p
+ +12:6       = 423.8470f 12:7       =   5.1647p 12:9       =   2.7479p
+ +12:10      = 3.803e-20 12:12      =   1.0727a 12:14      =  38.0869p
+ +12:15      = 922.3569f 12:17      =  16.2777p 12:19      =  32.8710p
+ +12:20      =  39.2994p 12:22      =  47.1086p 12:24      =  44.0681p
+ +12:25      =  39.3661p 12:27      =  41.7687p 12:28      =  44.8994p
+ +12:30      =  52.0958p 12:33      =   5.5333p 12:38      =  38.9474p
+ +12:40      =  44.4314p 12:50      =   5.4583p 12:53      =   5.3920p
+ +12:55      =   7.5290p 12:57      =  30.1018p 12:61      =  40.2405p
+ +12:63      =  40.3631p 12:65      =  41.7001p 12:67      =  42.9487p
+ +12:71      = 346.1188p 12:75      =  38.6417a 12:79      = 394.7830p
+ +12:83      = 384.3562p 13:2       =   1.8000  13:4       =   1.8000 
+ +13:6       =   1.8000  13:7       =   1.8000  13:9       =   1.8000 
+ +13:10      =   1.8000  13:12      =   1.8000  13:14      =   1.8000 
+ +13:15      =   1.8000  13:17      =   1.8000  13:19      =   1.8000 
+ +13:20      =   1.8000  13:22      =   1.8000  13:24      =   1.8000 
+ +13:25      =   1.8000  13:27      =   1.8000  13:28      =   1.8000 
+ +13:30      =   1.8000  13:36      =   1.8000  13:38      =   1.8000 
+ +13:40      =   1.8000  13:51      =   1.8000  13:55      =   1.8000 
+ +13:59      =   1.8000  13:63      =   1.8000  13:66      =   1.8000 
+ +13:69      =   1.8000  13:71      =   1.8000  13:73      =   1.8000 
+ +13:77      =   1.8000  13:79      =   1.8000  13:81      =   1.8000 
+ +13:83      =   1.8000 
+
+
+ **** voltage sources
+
+ subckt                                                  
+ element   0:va        0:vb        0:vdd       0:vss     
+  volts       0.          0.          1.8000      0.     
+  current     0.          0.       -131.2151p   131.1481p
+  power       0.          0.        236.1871p     0.     
+
+     total voltage source power dissipation=  236.1871p       watts
+
+
+
+ **** resistors
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   3:r13       3:r14       3:r15       3:r16       3:r17     
+  r value    95.7447m     7.9745    118.2500      4.7330      5.0286 
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   3:r18       3:r19       3:r20       3:r21       3:r22     
+  r value   150.5000     34.7500      7.7396     62.2500      7.7396 
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   3:r23       3:r24       3:r25       3:r26       3:r27     
+  r value    83.2500      1.2976      5.6298     13.2552     13.2552 
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   3:r28       3:r29       3:r30       3:r31       3:r32     
+  r value    60.2000m    16.8057m    61.2500m     8.0000      8.0000 
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   3:r33       4:r11       4:r12       4:r13       4:r14     
+  r value   361.1110m     8.1032      4.0680     37.2500     33.7500 
+  v drop      0.       -444.0892a   222.0446a   222.0446a     0.     
+  current     0.        -54.8043a    54.5832a     5.9609a     0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   4:r15       4:r16       4:r17       4:r18       4:r19     
+  r value     5.0286     13.0000      5.0286    227.0000      5.0159 
+  v drop      0.        222.0446a     0.          4.6629f   222.0446a
+  current     0.         17.0804a     0.         20.5416a    44.2681a
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   4:r20       4:r21       4:r22       4:r23       4:r24     
+  r value     5.0286    172.5000      4.5170      4.5170     13.2552 
+  v drop   -222.0446a     3.9968f  -100.0211p    99.8950p   222.0446a
+  current   -44.1567a    23.1699a   -22.1434p    22.1154p    16.7515a
+  power       0.          0.        2.215e-21   2.209e-21     0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   4:r25       4:r26       4:r27       4:r28       4:r29     
+  r value    15.3166m   160.0870m    16.3327     21.7403m   126.2120m
+  v drop      0.          0.       -361.2040p   480.7266f    -2.7913p
+  current     0.          0.        -22.1154p    22.1122p   -22.1161p
+  power       0.          0.        7.988e-21   1.063e-23   6.173e-23
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   4:r30       4:r31       4:r32       5:r1        5:r2      
+  r value    16.3327     21.7403m   541.9700m     4.5170      4.4830 
+  v drop    361.6614p  -481.1707f    12.0011p   -10.4847a    10.4059a
+  current    22.1434p   -22.1327p    22.1434p    -2.3212a     2.3212a
+  power     8.008e-21   1.065e-23   2.657e-22     0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   6:r1        6:r2        7:r7        7:r8        7:r9      
+  r value     4.8566      4.4830      4.3132      4.5170      4.4830 
+  v drop     36.1732p   -33.3906p   -91.8153p   -10.7712a    47.7150p
+  current     7.4483p    -7.4482p   -21.2870p    -2.3846a    10.6435p
+  power     2.694e-22   2.487e-22   1.954e-21     0.        5.079e-22
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   7:r10       7:r11       7:r12       7:r13       7:r14     
+  r value     4.3472     16.3327     42.6916m   129.1380m    16.3327 
+  v drop     46.2692p  -173.8371p   454.3882f    -1.3745p   347.6744p
+  current    10.6435p   -10.6435p    10.6435p   -10.6435p    21.2870p
+  power     4.925e-22   1.850e-21   4.836e-24   1.463e-23   7.401e-21
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   7:r15       7:r16       7:r17       7:r18       7:r19     
+  r value    42.6916m   648.1030m     1.4498m    45.6522m     1.4498m
+  v drop   -908.7766f    13.7962p   -15.4306f   485.8996f    15.4306f
+  current   -21.2870p    21.2870p   -10.6435p    10.6435p    10.6435p
+  power     1.935e-23   2.937e-22   1.642e-25   5.172e-24   1.642e-25
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   7:r20       7:r21       7:r22       7:r23       7:r24     
+  r value   287.6090m    16.3327     42.6916m   129.1380m    16.3327 
+  v drop     -3.0612p  -173.8373p   454.3885f    -1.3745p    38.9472a
+  current   -10.6435p   -10.6435p    10.6435p   -10.6435p     2.3846a
+  power     3.258e-23   1.850e-21   4.836e-24   1.463e-23     0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   7:r25       7:r26       8:r1        8:r2        9:r1      
+  r value    42.6916m   570.8620m     4.6868      4.4830      4.5170 
+  v drop   -1.018e-19     1.3613a    99.7678p   -95.4301p   -33.6435p
+  current    -2.3845a     2.3846a    21.2870p   -21.2870p    -7.4482p
+  power       0.          0.        2.124e-21   2.031e-21   2.506e-22
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element   9:r2       10:r7       10:r8       10:r9       10:r10     
+  r value     4.4830      8.0702      8.0702    124.7500     35.7500 
+  v drop     33.3906p     0.        222.0446a   444.0892a   444.0892a
+  current     7.4482p     0.         27.5141a     3.5598a    12.4221a
+  power     2.487e-22     0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  10:r11      10:r12      10:r13      10:r14      10:r15     
+  r value     4.6698      4.6698     16.3327     31.4443m   670.1850m
+  v drop   -103.4057p   103.3056p  -361.3134p   695.4437f   -14.8259p
+  current   -22.1435p    22.1220p   -22.1221p    22.1167p   -22.1221p
+  power     2.290e-21   2.285e-21   7.993e-21   1.538e-23   3.280e-22
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  10:r16      10:r17      10:r18      10:r19      10:r20     
+  r value    16.3327     31.4443m   208.7040m    13.2552      6.2343m
+  v drop    361.6611p  -696.5539f     4.6216p   222.0446a   222.0446a
+  current    22.1434p   -22.1520p    22.1445p    16.7515a    35.6168f
+  power     8.008e-21   1.543e-23   1.023e-22     0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  10:r21      11:r13      11:r14      11:r15      11:r16     
+  r value   278.5520m    15.5000      1.2976      9.8617     35.7500 
+  v drop    222.0446a     0.          0.          0.          0.     
+  current   797.1388a     0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  11:r17      11:r18      11:r19      11:r20      11:r21     
+  r value     7.7396     86.2500      7.7396     74.2500      5.0286 
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  11:r22      11:r23      11:r24      11:r25      11:r26     
+  r value   268.5000      5.0286     35.7500     78.2500    528.5590m
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  11:r27      11:r28      11:r29      11:r30      11:r31     
+  r value    23.7500      5.0286     42.5000      5.0286    528.5590m
+  v drop      0.          0.          0.          0.          0.     
+  current     0.          0.          0.          0.          0.     
+  power       0.          0.          0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  11:r32      11:r33      11:r34      12:r9       12:r10     
+  r value    49.0000     13.2552      5.1471m     4.3302      4.5170 
+  v drop      0.          0.          0.         88.0902p    96.1530p
+  current     0.          0.          0.         20.3433p    21.2870p
+  power       0.          0.          0.        1.792e-21   2.047e-21
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  12:r11      12:r12      12:r13      12:r14      12:r15     
+  r value     4.4830      4.4830     13.7547     14.0774     14.7736 
+  v drop     10.3120a    91.1992p    -1.2486p    -1.3370p  -122.6217f
+  current     2.3002a    20.3433p   -90.7777f   -94.9768f    -8.3001f
+  power       0.        1.855e-21   1.133e-25   1.270e-25   1.018e-27
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  12:r16      12:r17      12:r18      12:r19      12:r20     
+  r value    36.5094     13.5849     14.4340     31.5849      7.6415 
+  v drop    -22.5728p    -2.1369p    66.2767f    13.9893p    24.1280p
+  current  -618.2749f  -157.3004f     4.5917f   442.9121f     3.1575p
+  power     1.396e-23   3.361e-25   3.043e-28   6.196e-24   7.618e-23
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  12:r21      12:r22      12:r23      12:r24      12:r25     
+  r value    16.3327     16.3327     16.3327     16.3327     16.3327 
+  v drop      1.4826p    -1.4157p    -7.5290p    74.9949f  -332.2603p
+  current    90.7777f   -86.6767f  -460.9745f     4.5917f   -20.3433p
+  power     1.346e-25   1.227e-25   3.471e-24   3.444e-28   6.759e-21
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  12:r26      12:r27      12:r28      12:r29      12:r30     
+  r value    23.0068m   353.7500m    16.3327     20.6749m   118.6590m
+  v drop    468.0332f    -7.1964p    68.5814f   418.6312f    -2.4026p
+  current    20.3433p   -20.3433p     4.1990f    20.2483p   -20.2483p
+  power     9.521e-24   1.464e-22   2.880e-28   8.477e-24   4.865e-23
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  12:r31      12:r32      12:r33      12:r34      12:r35     
+  r value    17.9375m   113.5370m    16.3327     16.5352m   366.8520m
+  v drop   -363.2788f     2.2994p  -347.6744p   351.9850f    -7.8092p
+  current   -20.2525p    20.2525p   -21.2870p    21.2870p   -21.2870p
+  power     7.357e-24   4.657e-23   7.401e-21   7.493e-24   1.662e-22
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  12:r36      12:r37      12:r38      12:r39      12:r40     
+  r value    16.3327      5.4442    394.3900m    20.6749m   344.1950m
+  v drop     -7.3695p   -13.8241p   -16.5932p   922.3569f   -15.3554p
+  current  -451.2122f    -2.5392p   -42.0732p    44.6124p   -44.6124p
+  power     3.325e-24   3.510e-23   6.981e-22   4.115e-23   6.850e-22
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  12:r41      12:r42      12:r43      12:r44      12:r45     
+  r value    20.6749m   125.3170m    16.3327     16.5352m   449.8150m
+  v drop   -860.5300f     5.2159p   -37.5690a   3.803e-20    -1.0347a
+  current   -41.6220p    41.6220p    -2.3002a     2.3002a    -2.3002a
+  power     3.582e-23   2.171e-22     0.          0.          0.     
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  12:r46      12:r47      12:r48      12:r49      12:r50     
+  r value    16.3327     18.1223m   118.8290m    20.6749m   113.3660m
+  v drop     -2.6441p  -368.5834f     2.4168p   423.8470f    -2.3241p
+  current  -161.8921f   -20.3387p    20.3387p    20.5006p   -20.5006p
+  power     4.281e-25   7.496e-24   4.915e-23   8.689e-24   4.764e-23
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  12:r51      12:r52      12:r53      13:r9       13:r10     
+  r value    16.3327     21.9781m   387.2580m    14.6038     13.2283 
+  v drop   -332.2603p   447.1061f    -7.8781p   125.2332f    -2.0981p
+  current   -20.3433p    20.3433p   -20.3433p     8.5754f  -158.6069f
+  power     6.759e-21   9.096e-24   1.603e-22   1.074e-27   3.328e-25
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  13:r11      13:r12      13:r13      13:r14      13:r15     
+  r value    25.4717     32.0943     15.2830     12.5660      4.3302 
+  v drop    -16.0352p    27.5600p     8.1140p     3.8838p   -95.7923p
+  current  -629.5290f   858.7180f   530.9137f   309.0707f   -22.1220p
+  power     1.009e-23   2.367e-23   4.308e-24   1.200e-24   2.119e-21
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  13:r16      13:r17      13:r18      13:r19      13:r20     
+  r value     4.5170      4.3132      4.4830     14.7736     18.1698 
+  v drop    -27.3415p   -26.1084p   -99.1438p   -65.5134p   -86.2406p
+  current    -6.0530p    -6.0531p   -22.1154p    -4.4345p    -4.7464p
+  power     1.655e-22   1.580e-22   2.193e-21   2.905e-22   4.093e-22
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  13:r21      13:r22      13:r23      13:r24      13:r25     
+  r value    16.3327     16.3327     16.3327     16.3327     16.3327 
+  v drop   -140.1101f     7.6921p     5.3542p     5.0475p   361.3116p
+  current    -8.5785f   470.9613f   327.8185f   309.0437f    22.1220p
+  power     1.202e-27   3.623e-24   1.755e-24   1.560e-24   7.993e-21
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  13:r26      13:r27      13:r28      13:r29      13:r30     
+  r value    21.3527m   257.7270m    16.3327     23.3507m   105.0000m
+  v drop   -472.5109f     5.7012p     2.7305p  -520.9166f     2.3426p
+  current   -22.1289p    22.1211p   167.1789f   -22.3084p    22.3102p
+  power     1.046e-23   1.261e-22   4.565e-25   1.162e-23   5.226e-23
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  13:r31      13:r32      13:r33      13:r34      13:r35     
+  r value    18.3558m   116.9510m    16.3327     13.5763m   274.3550m
+  v drop    406.5637f    -2.5893p    98.8634p   -82.1565f     1.6607p
+  current    22.1491p   -22.1397p     6.0531p    -6.0515p     6.0530p
+  power     9.005e-24   5.733e-23   5.984e-22   4.972e-25   1.005e-23
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  13:r36      13:r37      13:r38      13:r39      13:r40     
+  r value     8.1663      5.4442    331.2200m    23.3507m   298.0980m
+  v drop     31.0727p    21.1646p    10.8191p  -853.0954f    10.8964p
+  current     3.8050p     3.8875p    32.6645p   -36.5340p    36.5531p
+  power     1.182e-22   8.228e-23   3.534e-22   3.117e-23   3.983e-22
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  13:r41      13:r42      13:r43      13:r44      13:r45     
+  r value    23.3507m   231.1710m    16.3327     13.5763m   274.3550m
+  v drop    674.1274f    -6.6713p    98.8634p   -82.3785f     1.6607p
+  current    28.8697p   -28.8589p     6.0531p    -6.0678p     6.0530p
+  power     1.946e-23   1.925e-22   5.984e-22   4.999e-25   1.005e-23
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  13:r46      13:r47      13:r48      13:r49      13:r50     
+  r value    16.3327     17.8205m   105.1710m    23.3507m   125.3170m
+  v drop      3.6229p  -769.1625f     4.5393p     1.0028p    -5.3799p
+  current   221.8176f   -43.1617p    43.1607p    42.9432p   -42.9305p
+  power     8.036e-25   3.320e-23   1.959e-22   4.306e-23   2.310e-22
+
+ subckt    xxor1.x_pm  xxor1.x_pm  xxor1.x_pm
+ element  13:r51      13:r52      13:r53     
+  r value    16.3327     23.8956m   327.1150m
+  v drop    361.2053p  -528.6882f     7.2342p
+  current    22.1155p   -22.1249p    22.1152p
+  power     7.988e-21   1.170e-23   1.600e-22
+
+
+
+ **** mosfets
+
+
+ subckt    xxor        xxor        xxor        xxor        xxor      
+ element   1:mp1       1:mn1       1:mp2       1:mn2       1:mp3     
+ model     0:p_18.1    0:n_18.1    0:p_18.1    0:n_18.1    0:p_18.1  
+ region    Linear      Cutoff      Linear      Cutoff      Cutoff    
+  id        -22.1434p    18.5433p   -22.1434p    18.5433p    -4.6580p
+  ibs       5.830e-27  -8.796e-27   5.830e-27  -8.796e-27   1.594e-27
+  ibd       6.406e-24  -198.3161a   6.406e-24  -198.3161a    93.5853a
+  vgs        -1.8000      0.         -1.8000      0.        -95.5808n
+  vds       -95.5808n     1.8000    -95.5808n     1.8000     -1.3951 
+  vbs         0.          0.          0.          0.          0.     
+  vth      -524.3504m   431.8389m  -524.3504m   431.8389m  -515.4776m
+  vdsat    -991.6381m    55.7353m  -991.6381m    55.7353m   -56.5231m
+  vod        -1.2756   -431.8389m    -1.2756   -431.8389m   515.4775m
+  beta      241.6173u     1.0753m   241.6173u     1.0753m   293.0598u
+  gam eff   557.0847m   507.4459m   557.0847m   507.4459m   557.0847m
+  gm         11.6846p   606.1612p    11.6846p   606.1612p   120.4265p
+  gds       232.0941u    15.5276p   232.0941u    15.5276p     1.8188p
+  gmb         6.0365p    79.6349p     6.0365p    79.6349p    43.2102p
+  cdtot       1.7661f   704.8485a     1.7661f   704.8485a   669.9919a
+  cgtot       1.1878f   601.1499a     1.1878f   601.1499a   617.7252a
+  cstot       1.7096f   965.0474a     1.7096f   965.0474a   897.2562a
+  cbtot       1.6542f     1.4478f     1.6542f     1.4478f     1.4245f
+  cgs       600.3455a   205.8055a   600.3455a   205.8055a   190.1185a
+  cgd       580.1035a   205.7990a   580.1035a   205.7990a   190.1110a
+
+
+
+ subckt    xxor        xxor        xxor        xxor        xxor      
+ element   1:mp4       1:mp5       1:mp6       1:mn3       1:mn4     
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:n_18.1    0:n_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear      Linear    
+  id         -8.4386p    -4.6580p    -8.4386p    21.2872p    21.2872p
+  ibs        93.5853a   1.594e-27    93.5853a  -9.204e-27  -2.287e-24
+  ibd       120.7454a    93.5853a   120.7454a  -2.268e-24  -4.546e-24
+  vgs      -404.8865m   -95.5808n  -404.8865m     1.8000      1.8000 
+  vds      -404.8865m    -1.3951   -404.8865m    20.6728n    20.6728n
+  vbs         1.3951      0.          1.3951      0.        -20.6728n
+  vth      -832.2544m  -515.4776m  -832.2544m   497.9518m   497.9518m
+  vdsat     -60.5996m   -56.5231m   -60.5996m   533.1480m   533.1480m
+  vod       427.3678m   515.4775m   427.3679m     1.3020      1.3020 
+  beta      230.4755u   293.0598u   230.4755u   820.6843u   820.6843u
+  gam eff   549.2192m   557.0847m   549.2192m   507.4459m   507.4459m
+  gm        249.3376p   120.4265p   249.3373p     9.4998p     9.4998p
+  gds         6.3471p     1.8188p     6.3471p     1.0381m     1.0381m
+  gmb        52.2363p    43.2102p    52.2363p     2.7609p     2.7609p
+  cdtot     640.8021a   669.9919a   640.8021a     1.7342f     1.7342f
+  cgtot     518.7618a   617.7252a   518.7618a     1.1443f     1.1443f
+  cstot     669.9939a   897.2562a   669.9939a     1.6535f     1.6535f
+  cbtot       1.0691f     1.4245f     1.0691f     1.6816f     1.6816f
+  cgs       190.1150a   190.1185a   190.1150a   536.3909a   536.3909a
+  cgd       190.1110a   190.1110a   190.1110a   541.8666a   541.8666a
+
+
+
+ subckt    xxor        xxor        xxor1       xxor1       xxor1     
+ element   1:mn5       1:mn6       2:m0        2:m1        2:m2      
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:n_18.1    0:n_18.1  
+ region    Cutoff      Cutoff      Cutoff      Cutoff      Cutoff    
+  id          2.2177a     2.2583a    18.5433p     2.2791a     2.3207a
+  ibs         0.       -2.257e-24  -5.165e-26   2.355e-25  -7.820e-25
+  ibd      -2.257e-24  -4.555e-24  -200.8456a  -7.820e-25  -4.735e-24
+  vgs         0.        -20.4853n  -437.3181p   -48.9537a   -21.0524n
+  vds        20.4853n    20.8604n     1.8000     21.0524n    21.4368n
+  vbs         0.        -20.4853n  -383.0882p    54.2298p   -20.9982n
+  vth       497.9518m   497.9518m   431.8389m   497.9518m   497.9518m
+  vdsat      55.7561m    55.7561m    55.7353m    55.7561m    55.7561m
+  vod      -497.9518m  -497.9519m  -431.8389m  -497.9518m  -497.9519m
+  beta        1.0706m     1.0706m     1.0753m     1.0706m     1.0706m
+  gam eff   507.4459m   507.4459m   507.4459m   507.4459m   507.4459m
+  gm         67.7592a    68.9997a   606.1612p    69.6349a    70.9063a
+  gds       108.2597p   108.2596p    15.5276p   108.2597p   108.2596p
+  gmb         7.1616a     7.2927a    79.6349p     7.3599a     7.4943a
+  cdtot     965.0472a   965.0472a   709.9709a   686.4827a   973.1862a
+  cgtot     601.1498a   601.1498a   601.1499a   601.1498a   601.1498a
+  cstot     965.0472a   965.0472a   973.1864a   973.1862a   686.4827a
+  cbtot       1.7080f     1.7080f     1.4611f     1.4376f     1.4376f
+  cgs       205.8053a   205.8053a   205.8055a   205.8053a   205.8053a
+  cgd       205.7991a   205.7991a   205.7990a   205.7991a   205.7991a
+
+
+
+ subckt    xxor1       xxor1       xxor1       xxor1       xxor1     
+ element   2:m3        2:m4        2:m5        2:m6        2:m7      
+ model     0:n_18.1    0:n_18.1    0:n_18.1    0:p_18.1    0:p_18.1  
+ region    Linear      Linear      Cutoff      Linear      Cutoff    
+  id        -21.2870p   -21.2870p   -18.5433p   -22.1154p    -4.6580p
+  ibs      -4.616e-24  -7.978e-25  -203.3751a   2.881e-26   2.101e-27
+  ibd      -8.115e-25  -5.805e-26  -5.487e-26   6.503e-24    32.9906a
+  vgs         1.8000      1.8000     -1.8000     -1.8000    -96.2539n
+  vds       -20.6726n   -20.6726n    -1.8000    -95.4598n    -1.3951 
+  vbs       -41.9772n   -21.1093n    -1.8000    337.2662p     7.5602p
+  vth       497.9518m   497.9518m   431.8389m  -524.3504m  -515.4776m
+  vdsat     533.1480m   533.1480m    55.7353m  -991.6381m   -56.5231m
+  vod         1.3020      1.3020   -431.8389m    -1.2756    515.4775m
+  beta      820.6843u   820.6843u     1.0753m   241.6173u   293.0598u
+  gam eff   507.4459m   507.4459m   507.4459m   557.0847m   557.0847m
+  gm          9.4997p     9.4997p   606.1612p    11.6698p   120.4265p
+  gds         1.0381m     1.0381m    15.5276p   232.0941u     1.8188p
+  gmb         2.7609p     2.7609p    79.6349p     6.0288p    43.2102p
+  cdtot       1.3790f     1.6617f   965.0474a     1.7762f   440.2058a
+  cgtot       1.1443f     1.1443f   601.1499a     1.1878f   617.7252a
+  cstot       1.7342f     1.4597f   715.0934a     1.7196f   897.2562a
+  cbtot       1.4071f     1.4152f     1.4581f     1.6743f     1.1947f
+  cgs       541.8666a   541.8666a   205.7990a   600.3455a   190.1185a
+  cgd       536.3909a   536.3909a   205.8055a   580.1035a   190.1110a
+
+
+
+ subckt    xxor1       xxor1       xxor1       xxor1     
+ element   2:m8        2:m9        2:m10       2:m11     
+ model     0:p_18.1    0:p_18.1    0:p_18.1    0:p_18.1  
+ region    Cutoff      Cutoff      Cutoff      Linear    
+  id         -8.4385p     8.4385p     4.6580p    22.1221p
+  ibs        32.9906a   122.2933a    31.7909a   6.590e-24
+  ibd       120.7454a    31.7909a   4.244e-27   3.131e-26
+  vgs      -404.8862m   -42.7090n     1.3951     -1.8000 
+  vds      -404.8861m   404.8861m     1.3951     95.4886n
+  vbs         1.3951      1.8000      1.3951     95.8685n
+  vth      -832.2544m  -832.2544m  -515.4776m  -524.3504m
+  vdsat     -60.5996m   -60.5996m   -56.5231m  -991.6381m
+  vod       427.3682m   427.3683m   515.4775m    -1.2756 
+  beta      230.4755u   230.4755u   293.0598u   241.6173u
+  gam eff   549.2192m   549.2192m   557.0847m   557.0847m
+  gm        249.3344p   249.3341p   120.4265p    11.6734p
+  gds         6.3471p     6.3470p     1.8188p   232.0941u
+  gmb        52.2357p    52.2356p    43.2102p     6.0306p
+  cdtot     640.8021a   433.4382a   907.3082a     1.7096f
+  cgtot     518.7618a   518.7618a   617.7252a     1.1878f
+  cstot     440.2078a   647.1492a   433.4362a     1.7862f
+  cbtot     839.3221a   838.8996a     1.1980f     1.6743f
+  cgs       190.1150a   190.1110a   190.1110a   580.1035a
+  cgd       190.1110a   190.1150a   190.1185a   600.3455a
+
+
+
+ ******
+ .protect
+
+ ****** transient analysis tnom=  25.000 temp=  25.000 ******
+ delay5layout=-153.9052p  targ=  22.3461n   trig=  22.5000n
+ delay5hspice=-173.7875p  targ=  22.3262n   trig=  22.5000n
+ delay6layout=-406.9667p  targ=  32.0930n   trig=  32.5000n
+ delay6hspice=-426.6035p  targ=  32.0734n   trig=  32.5000n
+ delay7layout= 803.4077p  targ=  58.3034n   trig=  57.5000n
+ delay7hspice= 790.6693p  targ=  58.2907n   trig=  57.5000n
+ delay8layout= 658.0110p  targ=  68.1580n   trig=  67.5000n
+ delay8hspice= 639.8530p  targ=  68.1399n   trig=  67.5000n
+ pwr=  14.6476u  from=   0.             to=  70.0000n
+
+          ***** job concluded
+ ******  
+ .protect
+
+ ****** job statistics summary tnom=  25.000 temp=  25.000 ******
+  
+ ******  Machine Information  ******
+ CPU:
+ model name	: Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz
+ cpu MHz	: 1596.000
+  
+ OS:
+ Linux version 2.6.32-696.30.1.el6.x86_64 (mockbuild@c1bl.rdu2.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-18) (GCC) ) #1 SMP Tue May 22 03:28:18 UTC 2018
+
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    16
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =     251 # elements   =     299
+  # resistors   =     198 # capacitors =      73 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       4
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =      24 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.01           1          32
+  transient          0.04        1401         355         114 rev=         8
+  readin             0.02
+  errchk             0.01
+  setup              0.00
+  output             0.00
+
+
+           peak memory used        360.25 megabytes
+           total cpu time            0.08 seconds
+           total elapsed time        0.37 seconds
+           job started at     22:04:50 12/27/2022
+           job ended   at     22:04:51 12/27/2022
+           job total runtime         0.37 seconds
+
+
+ lic: Release hspice token(s) 
+ lic: total license checkout elapse time:        0.28(s)

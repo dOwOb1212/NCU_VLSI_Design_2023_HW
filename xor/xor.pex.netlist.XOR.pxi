@@ -1,0 +1,15 @@
+* File: xor.pex.netlist.XOR.pxi
+* Created: Tue Dec 27 22:02:59 2022
+* 
+x_PM_XOR%A A N_A_M0_g N_A_M6_g N_A_M2_g N_A_M9_g PM_XOR%A
+x_PM_XOR%2 N_2_M6_d N_2_M0_d N_2_M7_g N_2_M3_g PM_XOR%2
+x_PM_XOR%3 N_3_M2_s N_3_M1_d PM_XOR%3
+x_PM_XOR%4 N_4_M8_s N_4_M7_d PM_XOR%4
+x_PM_XOR%OUT OUT N_OUT_M8_d N_OUT_M9_s N_OUT_M2_d N_OUT_M3_s PM_XOR%OUT
+x_PM_XOR%6 N_6_M4_s N_6_M3_d PM_XOR%6
+x_PM_XOR%7 N_7_M10_s N_7_M9_d PM_XOR%7
+x_PM_XOR%8 N_8_M11_s N_8_M5_s N_8_M4_g N_8_M10_g PM_XOR%8
+x_PM_XOR%B B N_B_M1_g N_B_M8_g N_B_M5_g N_B_M11_g PM_XOR%B
+x_PM_XOR%VSS VSS N_VSS_M0_b N_VSS_M0_s N_VSS_M1_s N_VSS_M4_d N_VSS_M5_d
++ PM_XOR%VSS
+x_PM_XOR%VD VD N_VD_M6_b N_VD_M6_s N_VD_M7_s N_VD_M10_d N_VD_M11_d PM_XOR%VD

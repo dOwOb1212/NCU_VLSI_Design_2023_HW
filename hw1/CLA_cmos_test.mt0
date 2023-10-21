@@ -1,0 +1,12 @@
+$DATA1 SOURCE='HSPICE' VERSION='Q-2020.03 linux64' PARAM_COUNT=0
+.TITLE '.title carry_lookahead addder implement by cmos logic'
+ t1               t2               td               power_analysis_mux
+ power_analysis_xnor_up power_analysis_xnor_low all_power       
+ u0_power         u1_power         u2_power         u3_power        
+ u4_power         u5_power         u6_power         u7_power        
+ temper           alter#          
+  5.150e-09        6.253e-09        1.103e-09        4.979e-05      
+  2.537e-05        2.008e-05        3.281e-04        9.524e-05      
+  3.517e-05        3.316e-05        3.527e-05        3.850e-05      
+  3.686e-05        2.988e-05        2.407e-05         25.0000       
+1               

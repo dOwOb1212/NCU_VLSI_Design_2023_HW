@@ -1,0 +1,52 @@
+****** HSPICE -- Q-2020.03 linux64 (Mar  8 2020) ******
+Input File: CLA_cmos_test.sp
+lic:
+lic: FLEXlm: SDK_12.6
+lic: USER:   109303021            HOSTNAME: ares-athena
+lic: HOSTID: "e61f13c2e205"       PID:      13346
+lic: Using FLEXlm license file:
+lic: 26585@lshc
+lic: Checkout 1 hspice
+lic: License/Maintenance for hspice will expire on 14-may-2025/2022.06
+lic: 283(in_use)/600(total) FLOATING license(s) on SERVER 26585@lshc
+lic:
+
+ init: begin read circuit files, cpu clock= 1.30E+00
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/ad
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/behave
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/bjt
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/burr_brn
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/comlinear
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/dio
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/fet
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/lin_tech
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/pci
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/signet
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/ti
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/tline
+       option search = /usr/cad/synopsys/hspice/cur/hspice/parts/xilinx
+       option post
+ init: end read circuit files, cpu clock= 1.30E+00 peak memory=     358 mb
+ init: begin check errors, cpu clock= 1.30E+00
+ init: end check errors, cpu clock= 1.31E+00 peak memory=     360 mb
+ init: begin setup matrix, pivot=     0 cpu clock= 1.31E+00
+       establish matrix -- done, cpu clock= 1.32E+00 peak memory=     360 mb
+       re-order matrix -- done, cpu clock= 1.32E+00 peak memory=     361 mb
+ init: end setup matrix, cpu clock= 1.32E+00 peak memory=     361 mb
+ dcop: begin dcop, cpu clock= 1.32E+00
+ dcop: end dcop, cpu clock= 1.34E+00 peak memory=     361 mb tot_iter=      21
+ output: CLA_cmos_test.mt0
+ sweep: tran tran0    begin, stop_t=  2.00E-08 #sweeps= 201 cpu clock= 1.34E+00
+ tran: time= 2.0442E-09 tot_iter=     136 conv_iter=      42 cpu clock= 1.42E+00
+ tran: time= 4.4043E-09 tot_iter=     149 conv_iter=      47 cpu clock= 1.43E+00
+ tran: time= 6.0223E-09 tot_iter=     258 conv_iter=      80 cpu clock= 1.48E+00
+ tran: time= 8.1569E-09 tot_iter=     312 conv_iter=      98 cpu clock= 1.51E+00
+ tran: time= 1.0913E-08 tot_iter=     318 conv_iter=     101 cpu clock= 1.51E+00
+ tran: time= 1.2913E-08 tot_iter=     322 conv_iter=     103 cpu clock= 1.51E+00
+ tran: time= 1.4913E-08 tot_iter=     326 conv_iter=     105 cpu clock= 1.52E+00
+ tran: time= 1.6913E-08 tot_iter=     330 conv_iter=     107 cpu clock= 1.52E+00
+ tran: time= 1.8913E-08 tot_iter=     334 conv_iter=     109 cpu clock= 1.52E+00
+ tran: time= 2.0000E-08 tot_iter=     336 conv_iter=     110 cpu clock= 1.52E+00
+ sweep: tran tran0    end, cpu clock= 1.52E+00 peak memory=     362 mb
+>info:         ***** hspice job concluded
+ lic: Release hspice token(s)

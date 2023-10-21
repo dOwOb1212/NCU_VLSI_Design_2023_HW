@@ -1,0 +1,6 @@
+$DATA1 SOURCE='HSPICE' VERSION='Q-2020.03 linux64' PARAM_COUNT=0
+.TITLE '.title carry_lookahead addder implement by psuedo nmos logic'
+ t1               t2               td               power           
+ temper           alter#          
+  5.150e-09        5.803e-09        6.529e-10        1.559e-03      
+   25.0000        1               
